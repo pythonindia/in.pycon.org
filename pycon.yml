@@ -1,0 +1,20 @@
+
+db_parameters:
+    engine: "postgres"
+    database: "pycon"
+    username: "anand"
+    password: ""
+
+plugins:
+    - links
+    - wikitemplates
+    - pycon
+
+python_path:
+    - "."
+
+plugin_path:
+    - "plugins"
+    - "infogami.plugins"
+
+
