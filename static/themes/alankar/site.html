@@ -1,0 +1,114 @@
+$def with (page)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>$page.title - PyCon India 2010</title>
+    <link rel="stylesheet" type="text/css" href="$homepath()/static/themes/alankar/style.css" />
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="$homepath()/static/themes/alankar/jquery.countdown.min.js"></script>
+    <script type="text/javascript" src="$homepath()/static/themes/alankar/cufon-yui.js"></script>
+    <script type="text/javascript" src="$homepath()/static/themes/alankar/fonts/Fontin_Sans_Rg_400.font.js"></script>
+    <script type="text/javascript">
+        Cufon.replace('#nav');
+        Cufon.replace('#contents h1');
+        Cufon.replace('#contents h2');
+        Cufon.replace('#contents h3');
+        Cufon.replace('#contents h4');
+    </script>
+
+    <script type="text/javascript" src="$homepath()/static/themes/alankar/countdown.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <div id="account">
+                $if ctx.user:
+                    <form name='logout' action="$homepath()/account/logout" method='POST' style="display:none;"></form>
+                    Welcome <a href="$homepath()/$ctx.user">$ctx.user.displayname</a>!
+                    | <a href="#" onclick="document.forms['logout'].submit()">Log out</a>
+                $else:
+                    <a href="$homepath()/account/login">Login</a>
+            </div>
+
+            <div id="defaultCountdown"></div>
+
+            <div id="nav">
+                <ul>
+                    <li>
+                        <a href="$homepath()/">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="$homepath()/sponsors">Sponsors</a>
+                    </li>
+                    <li>
+                        <a href="$homepath()/cfp">CFP</a>
+                    </li>
+                    <li>
+                        <a href="$homepath()/program">Schedule</a>
+                    </li>
+                    <li>
+                        <a href="$homepath()/faq">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- end of header -->
+
+        <div id="content">
+            <div id="sidebar">
+                <h3>Platinum Sponspors</h3>
+                <p>
+                    <img class="sponsor" src="http://placehold.it/120x80&text=Sponsor" alt="" title=""/>
+                </p>
+
+                <h3>Gold Sponspors</h3>
+                <p>
+                    <img class="sponsor" src="http://placehold.it/120x80&text=Sponsor" alt="" title=""/>
+                </p>
+                <p>
+                    <img class="sponsor" src="http://placehold.it/120x80&text=Sponsor" alt="" title=""/>
+                </p>
+
+                <h3>Silver Sponspors</h3>
+                <p>
+                    <img class="sponsor" src="http://placehold.it/120x80&text=Sponsor" alt="" title=""/>
+                </p>
+                <p>
+                    <img class="sponsor" src="http://placehold.it/120x80&text=Sponsor" alt="" title=""/>
+                </p>
+                <p>
+                    <img class="sponsor" src="http://placehold.it/120x80&text=Sponsor" alt="" title=""/>
+                </p>
+            </div>
+            <!-- end of sidebar -->
+
+            <div id="contents">
+                <div class="flash-messages">
+                    $for flash in get_flash_messages():
+                        <div class="$flash.type"><span>$flash.message</span></div>
+                        <div class="clearfix"></div>
+                </div>
+
+                $if page.title != "Home":
+                    <h1>$page.title</h1>
+                $:page
+
+            </div>
+            <!-- end of normal content -->
+
+        </div>
+        <!-- end of content -->
+
+        <div id="footer">
+            <a href="#">Contact Us</a>
+            <span style="float: right">Powered by <a href="http://infogami.org/">Infogami</a></span>
+        </div>
+        <!-- end of content -->
+
+    </div>
+</body>
+</html>

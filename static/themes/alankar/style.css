@@ -1,0 +1,319 @@
+/* 			Reset everything for more control 		*/
+* {
+  margin:0px;
+  padding:0px;
+  text-decoration:none;
+  font-weight:normal;
+}
+body {
+    line-height: 1.3em;
+    font-family: helvetica,arial,freesans,clean,sans-serif;
+    font-size:12px;
+    background: #D2EAF7 url(images/taj_back.jpg) right bottom no-repeat;
+	/* new try */
+ 	background: url(images/bg_light.png) repeat;
+}
+
+
+/* 			Layout elements 		*/
+#wrapper {
+	margin:0px auto;
+	width:900px;
+/* 	background: url(images/leafy_decor.jpg) left -20px no-repeat; */
+}
+#header{
+	background: url(images/logo-head.png) left -20px no-repeat;
+	/* new transparent try out */
+	background: url(images/logo-head2.png) left -20px no-repeat;
+	/* smaller one */
+	background: url(images/logo-head5.png) left -30px no-repeat;
+
+	border-bottom: #cbe2ef 1px solid;
+}
+#content { margin-top:20px; overflow:hidden; padding-bottom:20px; clear: both;}
+#footer {
+    padding:10px;
+    padding-right: 50px;
+    clear:both;
+    text-align:center;
+    color: #6d8f9e;
+    font-size:0.9em;
+    border-top: #ffffff 1px solid;
+}
+#footer a { color:#000000; border-bottom:1px dotted #000000; }
+
+
+/* 			navigation 			*/
+#nav { border-bottom: #ffffff 1px solid;}
+#nav ul li {
+	list-style:none;
+	display:inline-block;
+	margin-top:80px;
+	text-align:left;
+	font-family: "Fontin Sans Rg";
+	padding:10px 20px;
+}
+#nav ul li a {
+	text-decoration:none;
+	color:#808f9c;
+	font-size: 1.7em;
+	text-shadow:-1px 1px 1px #fff;
+}
+#nav ul li span{
+	color:#80a1b8;
+	font-size: 1.0em;
+	display:block;
+	padding-top:4px;
+}
+#nav ul li a:hover { color:#4a688b; }
+#nav ul li:hover {
+	/*background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#D2EAF7), to(#e0f4ff), color-stop(.1,#D2EAF7));*/
+}
+
+
+/* 			sidebar styling 			*/
+#sidebar {
+	float:right;
+	width:220px;
+	text-align:center;
+}
+#sidebar h3 {
+	font-family: "Fontin Sans Rg";
+	margin:8px 0px 3px 0px ;
+	color:#80888C;
+}
+
+
+/* 			contents 			*/
+#contents { width: 660px; }
+#contents p p{
+	padding: 10px 0px 15px 30px;
+	border-bottom:1px dashed #769eb0;
+}
+
+#contents h1, #contents h2, #contents h3, #contents h4 {
+	color:#9c6038;
+	font-family: "Fontin Sans Rg";
+	/* text-shadow: -1px 1px 1px #fff; */
+}
+
+#contents h1 {
+	font-size: 1.875em;
+	margin-top:15px;
+	margin-bottom: 15px;
+}
+
+#contents h2 {
+	font-size: 1.375em;
+	margin-top:15px;
+	margin-bottom: 10px;
+}
+
+#contents h3 {
+    font-size: 1.2em;
+    margin: 5px 0px;
+}
+
+#contents h4 {
+    font-size: 1.1em;
+    margin: 5px 0px;
+}
+
+
+/* account links */
+#account {
+	float:right;
+	text-align:right;
+	/*background:#ffffff;*/
+	padding:0px 0px 3px 10px;
+	font-size:0.8em;
+}
+#account a { color:#0000a0;  margin-right:4px; display:inline-block; }
+
+
+
+/*              login box               */
+.loginbox { text-align:left; margin-bottom:20px;}
+
+
+
+
+
+/* jQuery Countdown styles 1.5.8. */
+
+/**
+
+
+	By Ten Seven Interactive
+	http://ten7i.com/
+
+	May 10, 2009 - after years of practice
+
+	If you use this & don't acknowledge it,
+	we will cry a global tear. Be fair!
+
+
+**/
+#defaultCountdown {
+clear:both;
+	width: 220px; height: 55px;
+	text-align: center;
+	float:right;
+	margin-top:62px;
+
+}
+#t7_timer {
+	width: 300px;
+	height: 45px;
+	position: relative;
+}
+#t7_timer_over {
+	width: 300px;
+	height: 55px;
+	background-image: url(images/Countdown-over.gif);
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 0px;
+	left: 1px;
+	margin: 0px;
+	padding: : 0px;
+}
+#t7_vals {
+	width: 100%;
+	clear:both;
+	margin: 0px auto;
+}
+.t7_numbs {
+	font-size: 28px;
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+	text-align: left;
+	color: #ffffff;
+}
+
+#t7_y {
+	background-image: url(images/Countdown2.png);
+	background-repeat: no-repeat;
+	float:left;
+	width: 48px;
+	height:35px;
+	background-color:#ffffff;
+	padding: 0px 0px 0px 3px;
+	margin: 1px;
+		margin-right:5px;
+
+	letter-spacing: 7px;
+}
+#t7_d {
+	background-image: url(images/Countdown3.png);
+	background-repeat: no-repeat;
+	float:left;
+	width: 63px;
+	height:25px;
+	background-color:#ffffff;
+	padding: 7px 0px 0px 3px;
+	margin: 1px;
+		margin-right:5px;
+
+	letter-spacing: 7px;
+}
+#t7_h {
+	background-image: url(images/Countdown2.png);
+	background-repeat: no-repeat;
+	float:left;
+	width: 42px;
+	height:25px;
+	background-color:#ffffff;
+	padding: 7px 0px 0px 3px;
+	margin: 1px;
+		margin-right:5px;
+
+	letter-spacing: 7px;
+}
+#t7_m {
+	background-image: url(images/Countdown2.png);
+	background-repeat: no-repeat;
+	float:left;
+	width: 42px;
+	height:25px;
+	background-color:#ffffff;
+	padding: 7px 0px 0px 3px;
+	margin: 1px;
+	margin-right:5px;
+	letter-spacing: 7px;
+}
+#t7_s {
+	background-image: url(images/Countdown2-nc.png);
+	background-repeat: no-repeat;
+	float:left;
+	width: 42px;
+	height:25px;
+	background-color:#ffffff;
+	padding: 7px 0px 0px 3px;
+	margin: 1px;
+	letter-spacing: 7px;
+}
+
+#t7_labels {
+	width: 100%;
+	clear:both;
+	margin: 0px auto;
+}
+
+.t7_labs {
+	font-size: 9px;
+	font-family: Verdana, Arial, sans-serif;
+	font-weight: bold;
+	text-align: center;
+	color: #000000;
+}
+#t7_yl {
+	float:left;
+	width: 51px;
+	height:15px;
+	padding:0px;
+	margin: 0px;
+}
+#t7_dl {
+	float:left;
+	width: 68px;
+	height:15px;
+	padding:0px;
+	margin: 0px;
+}
+#t7_hl {
+	float:left;
+	width: 54px;
+	height:15px;
+	padding:0px;
+	margin: 0px;
+}
+#t7_ml {
+	float:left;
+	width: 55px;
+	height:15px;
+	padding:0px;
+	margin: 0px;
+}
+#t7_sl {
+	float:left;
+	width: 46px;
+	height:15px;
+	padding:0px;
+	margin: 0px;
+}
+
+img.sponsor {
+    padding: 5px;
+}
+
+#dateline {
+    margin: 10px 0px;
+}
+
+.error {
+    padding: 5px;
+    background: #ffaaaa;
+    border: 1px solid #ff8888;
+}
+

@@ -1,0 +1,119 @@
+$def with (talk={})
+
+$var title: Submit a talk
+
+<style type="text/css">
+
+input[type=text], select {
+    width: 500px;
+    font-size: 1.2em;
+}
+
+span.smaller {
+    font-size: 0.8em;
+    color: #666666;
+}
+
+textarea {
+    width: 100%;
+    font-size: 1.0em;
+}
+
+div.label {
+    padding: 15px 0px 2px 0px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+</style>
+
+<form method="POST">
+    <div class="formElement">
+        <div class="label">
+            <label for="title">Title</label>
+            <span class="smaller lighter">Title of your talk.</span>            
+        </div>
+        <div class="input">
+            <input type="text" name="title" value="$talk.get('title')"/>
+        </div>
+    </div>
+    <div class="input">
+        <div class="label">
+            <label for="title">Duration</label>
+            <span class="smaller lighter">Expected duration of the talk in minutes.</span>
+        </div>
+        <div class="input">
+            <input type="text" name="duration" value="$talk.get('duration')"/>
+        </div>
+    </div>
+
+    <div class="input">
+        <div class="label">
+            <label for="title">Authors</label>
+            <span class="smaller lighter">Names of the authors, separated by comma.</span>
+        </div>
+        <div class="input">
+            <input type="text" name="authors" value="$talk.get('authors')"/>
+        </div>
+    </div>
+    
+    <div class="input">
+        <div class="label">
+            <label for="title">Contact E-mail</label>
+            <span class="smaller lighter">We need this to communicate with the authors during the selection process.</span>
+        </div>
+        <div class="input">
+            <input type="text" name="contact" value="$talk.get('contact')"/>
+        </div>
+    </div>
+
+    <div class="input">
+        <div class="label">
+            <label for="title">Level</label>
+            <span class="smaller lighter"></span>
+        </div>
+        <div class="input">
+            $:Dropdown("level", ["Beginner", "Intermediate", "Advanced"], value=talk.get('level', 'Beginner')).render()
+        </div>
+    </div>
+
+    <div class="input">
+        <div class="label">
+            <label for="title">Tags</label>
+            <span class="smaller lighter">Please separate with commas. For example: Web Programming, Django, Algorithms, PyGame. </span>
+        </div>
+        <div class="input">
+            <input type="text" name="tags" value="$talk.get('tags')"/>
+        </div>
+    </div>
+    
+    <div class="input">
+        <div class="label">
+            <label for="title">Summary</label>
+        </div>
+        <div class="input">
+            <textarea name="summary" class="wmd" rows="10">$talk.get('summary')</textarea>
+        </div>
+    </div>
+
+    <div class="input">
+        <div class="label">
+        </div>
+        <div class="input">
+            <input type="submit" name="submit" value="Submit"/>
+        </div>
+    </div>
+</form>
+
+
+<!--
+<link href="$homepath()/static/wmd.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="$homepath()/static/js/jquery.wmd.min.js"/>
+
+<script>
+    \$().ready(function() {
+       \$("textarea.wmd").wmd();
+    });
+</script>
+-->
+
+</script>

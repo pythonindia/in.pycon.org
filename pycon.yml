@@ -7,8 +7,8 @@ db_parameters:
 
 plugins:
     - links
-    - wikitemplates
-    - pycon
+    - conference
+    - pyconindia2010
 
 python_path:
     - "."
