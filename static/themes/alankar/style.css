@@ -359,3 +359,7 @@ div.label {
 strong { 
     font-weight: bold;
 }
+
+span.note {
+    color: #e44028;
+}

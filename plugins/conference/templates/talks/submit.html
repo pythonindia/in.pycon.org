@@ -1,4 +1,4 @@
-$def with (talk={})
+$def with (form)
 
 $var title: Submit a talk
 
@@ -9,7 +9,8 @@ $var title: Submit a talk
             <span class="smaller lighter">Title of your talk.</span>            
         </div>
         <div class="input">
-            <input type="text" id="title" name="title" value="$talk.get('title')"/>
+            <input type="text" id="title" name="title" value="$form.title.value"/>
+            <span class="note">$form.title.note</span>
         </div>
     </div>
     <div class="formElement">
@@ -18,37 +19,17 @@ $var title: Submit a talk
             <span class="smaller lighter">Expected duration of the talk in minutes.</span>
         </div>
         <div class="input">
-            <input type="text" id="duration" name="duration" value="$talk.get('duration')"/>
+            $:Dropdown("duration", [("30", "30 minutes"), ("45", "45 minutes")], value=form.duration.value or '45').render()
+            <span class="note">$form.duration.note</span>
         </div>
     </div>
-
-    <div class="formElement">
-        <div class="label">
-            <label for="authors">Authors</label>
-            <span class="smaller lighter">Names of the authors, separated by comma.</span>
-        </div>
-        <div class="input">
-            <input type="text" id="authors" name="authors" value="$talk.get('authors')"/>
-        </div>
-    </div>
-    
-    <div class="formElement">
-        <div class="label">
-            <label for="contact">Contact E-mail</label>
-            <span class="smaller lighter">We need this to communicate with the authors during the selection process.</span>
-        </div>
-        <div class="input">
-            <input type="text" id="contact" name="contact" value="$talk.get('contact')"/>
-        </div>
-    </div>
-
     <div class="formElement">
         <div class="label">
             <label for="level">Level</label>
-            <span class="smaller lighter"></span>
+            <span class="smaller lighter">Expected level of audience.</span>
         </div>
         <div class="input">
-            $:Dropdown("level", ["Beginner", "Intermediate", "Advanced"], value=talk.get('level', 'Beginner')).render()
+            $:Dropdown("level", ["Beginner", "Intermediate", "Advanced"], value=form.level.value or 'Beginner').render()
         </div>
     </div>
 
@@ -58,16 +39,49 @@ $var title: Submit a talk
             <span class="smaller lighter">Please separate with commas. For example: Web Programming, Django, Algorithms, PyGame. </span>
         </div>
         <div class="input">
-            <input type="text" id="tags" name="tags" value="$talk.get('tags')"/>
+            <input type="text" id="tags" name="tags" value="$form.tags.value"/>
+        </div>
+    </div>
+    
+    <div class="formElement">
+        <div class="label"></div>
+        <div class="input"></div>
+    </div>
+
+    <div class="formElement">
+        <div class="label">
+            <label for="authors">Authors</label>
+            <span class="smaller lighter">Names of the authors, separated by comma.</span>
+        </div>
+        <div class="input">
+            <input type="text" id="authors" name="authors" value="$form.authors.value"/>
+            <span class="note">$form.authors.note</span>
         </div>
     </div>
     
     <div class="formElement">
         <div class="label">
-            <label for="summary">Summary</label>
+            <label for="contact">Contact E-mail</label>
+            <span class="smaller lighter">We need this to communicate with the authors during the selection process.</span>
         </div>
         <div class="input">
-            <textarea name="summary" id="summary" class="wmd" rows="10">$talk.get('summary')</textarea>
+            <input type="text" id="contact" name="contact" value="$form.contact.value"/>
+            <span class="note">$form.contact.note</span>
+        </div>
+    </div>
+
+    <div class="formElement">
+        <div class="label"></div>
+        <div class="input"></div>
+    </div>
+    
+    <div class="formElement">
+        <div class="label">
+            <label for="summary">Summary</label>
+            <span class="note">$form.summary.note</span>            
+        </div>
+        <div class="input">
+            <textarea name="summary" id="summary" class="wmd" rows="10">$form.summary.value</textarea>
         </div>
     </div>
 
