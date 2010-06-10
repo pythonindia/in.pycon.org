@@ -363,3 +363,7 @@ strong {
 span.note {
     color: #e44028;
 }
+
+option {
+    padding: 0px 3px;
+}

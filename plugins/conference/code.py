@@ -17,6 +17,7 @@ form_talk = Form(
     Textbox("authors", notnull),
     Textbox("contact", notnull, regexp(re_email, "Please enter a valid email address.")),
     Textbox("level", notnull),
+    Textbox("topic", notnull),
     Textbox("tags"),
     Textarea("summary", notnull),
 )

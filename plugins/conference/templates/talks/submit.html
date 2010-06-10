@@ -2,6 +2,33 @@ $def with (form)
 
 $var title: Submit a talk
 
+$code: 
+    topics = """
+    Core Python (including Python 3.x)
+    Python standard library
+    Other Python libraries and extensions
+    Other Python implementations (such as PyPy, IronPython etc)
+    Concurrency
+    Databases
+    Scientific Programming
+    Network programming
+    Game programming
+    Education and Training
+    Embedding/extending
+    GUI programming
+    Packaging Python Code
+    System administration
+    Business applications
+    Documentation
+    Software development tools
+    Testing
+    Web programming
+    Mobile computing
+    Open source Python projects
+    Other
+    """
+    topics = [("", "Please select a topic")] + [line.strip() for line in topics.strip().split("\n")]
+
 <form method="POST" class="">
     <div class="formElement">
         <div class="label">
@@ -30,6 +57,17 @@ $var title: Submit a talk
         </div>
         <div class="input">
             $:Dropdown("level", ["Beginner", "Intermediate", "Advanced"], value=form.level.value or 'Beginner').render()
+        </div>
+    </div>
+
+    <div class="formElement">
+        <div class="label">
+            <label for="topic">Topic</label>
+            <span class="smaller lighter"></span>
+        </div>
+        <div class="input">
+            $:Dropdown("topic", topics, value=form.topic.value or '').render()
+            <span class="note">$form.topic.note</span>
         </div>
     </div>
 
