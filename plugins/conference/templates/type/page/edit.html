@@ -1,0 +1,47 @@
+$def with (page)
+
+$ _e = i18n.get_namespace('/mode/edit')
+$ _t = i18n.get_namespace('/type/page')
+
+$var title: $_e.edit_title(page.title)
+
+
+<form name="edit" method="post" action="">
+<div class="hidden">
+$:macros.TypeChanger(page.type)
+</div>
+
+<div class="formElement">
+    <div class="label">
+        <label for="title">Title:</label>
+    </div>
+    <div class="input">
+        <input type="text" id="title" name="title" value="$page.title"/>
+    </div>
+</div>
+
+<div class="formElement">
+    <div class="label">
+        <label for="body">Body:</label>
+    </div>
+    <div class="input">
+        <textarea name="body" id="body" rows="15" class="wmd">$page.body</textarea>
+    </div>
+</div>
+
+<div class="formElement">
+    <div class="label">
+        <label for="comment">Edit Summary:</label>
+    </div>
+    <div class="input">
+        <input type="text" id="comment" name="_comment" value="$page.comment_" rows="15" style="width: 100%"/>
+    </div>
+</div>
+
+<div style="margin: 10px 0px;">
+<input type="submit" name='_save' value="Save" />
+<a href="$changequery(m=None)" class="red">Cancel</a>
+<button tabindex="0" class="right" id="delete" title="Delete Record" name="_delete" value="Delete Record" type="submit">Delete Page</button>
+
+</div>
+</form>

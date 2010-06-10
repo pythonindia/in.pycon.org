@@ -311,9 +311,51 @@ img.sponsor {
     margin: 10px 0px;
 }
 
+/* customizations by Anand. */
+
 .error {
     padding: 5px;
     background: #ffaaaa;
     border: 1px solid #ff8888;
 }
 
+
+input[type=text], select {
+    width: 500px;
+    font-size: 1.2em;
+}
+
+span.smaller {
+    font-size: 0.8em;
+    color: #666666;
+}
+
+textarea {
+    width: 100%;
+    font-size: 1.0em;
+}
+
+label {
+    font-weight: 700;
+}
+
+div.label {
+    padding: 15px 0px 2px 0px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+.right {
+    float: right;
+}
+.red {
+    color: #e44028;
+}
+
+strong { 
+    font-weight: bold;
+}

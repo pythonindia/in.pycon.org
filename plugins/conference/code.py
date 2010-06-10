@@ -11,9 +11,10 @@ class submit_talk(delegate.page):
     path = "/talks/submit"
     
     def GET(self):
+        add_flash_message("error", "Talk submission is not yet ready. Please check again after a couple days.")  
         return render_template("talks/submit")
         
     def POST(self):
-        add_flash_message("error", "Talk submission is not yet implemented!")
+        add_flash_message("error", "Talk submission is not yet ready. Please check again after a couple days.")
         i = web.input()
         return render_template("talks/submit", i)
