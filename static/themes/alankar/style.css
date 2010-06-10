@@ -319,8 +319,7 @@ img.sponsor {
     border: 1px solid #ff8888;
 }
 
-
-input[type=text], select {
+.formElement input[type=text], .formElement select {
     width: 500px;
     font-size: 1.2em;
 }
@@ -333,6 +332,7 @@ span.smaller {
 textarea {
     width: 100%;
     font-size: 1.0em;
+    padding: 5px;
 }
 
 label {
