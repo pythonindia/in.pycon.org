@@ -9,42 +9,42 @@ $var title: Submit a talk
             <span class="smaller lighter">Title of your talk.</span>            
         </div>
         <div class="input">
-            <input type="text" name="title" value="$talk.get('title')"/>
+            <input type="text" id="title" name="title" value="$talk.get('title')"/>
         </div>
     </div>
     <div class="input">
         <div class="label">
-            <label for="title">Duration</label>
+            <label for="duration">Duration</label>
             <span class="smaller lighter">Expected duration of the talk in minutes.</span>
         </div>
         <div class="input">
-            <input type="text" name="duration" value="$talk.get('duration')"/>
+            <input type="text" id="duration" name="duration" value="$talk.get('duration')"/>
         </div>
     </div>
 
     <div class="input">
         <div class="label">
-            <label for="title">Authors</label>
+            <label for="authors">Authors</label>
             <span class="smaller lighter">Names of the authors, separated by comma.</span>
         </div>
         <div class="input">
-            <input type="text" name="authors" value="$talk.get('authors')"/>
+            <input type="text" id="authors" name="authors" value="$talk.get('authors')"/>
         </div>
     </div>
     
     <div class="input">
         <div class="label">
-            <label for="title">Contact E-mail</label>
+            <label for="contact">Contact E-mail</label>
             <span class="smaller lighter">We need this to communicate with the authors during the selection process.</span>
         </div>
         <div class="input">
-            <input type="text" name="contact" value="$talk.get('contact')"/>
+            <input type="text" id="contact" name="contact" value="$talk.get('contact')"/>
         </div>
     </div>
 
     <div class="input">
         <div class="label">
-            <label for="title">Level</label>
+            <label for="level">Level</label>
             <span class="smaller lighter"></span>
         </div>
         <div class="input">
@@ -54,20 +54,20 @@ $var title: Submit a talk
 
     <div class="input">
         <div class="label">
-            <label for="title">Tags</label>
+            <label for="tags">Tags</label>
             <span class="smaller lighter">Please separate with commas. For example: Web Programming, Django, Algorithms, PyGame. </span>
         </div>
         <div class="input">
-            <input type="text" name="tags" value="$talk.get('tags')"/>
+            <input type="text" id="tags" name="tags" value="$talk.get('tags')"/>
         </div>
     </div>
     
     <div class="input">
         <div class="label">
-            <label for="title">Summary</label>
+            <label for="summary">Summary</label>
         </div>
         <div class="input">
-            <textarea name="summary" class="wmd" rows="10">$talk.get('summary')</textarea>
+            <textarea name="summary" id="summary" class="wmd" rows="10">$talk.get('summary')</textarea>
         </div>
     </div>
 
@@ -79,17 +79,3 @@ $var title: Submit a talk
         </div>
     </div>
 </form>
-
-
-<!--
-<link href="$homepath()/static/wmd.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="$homepath()/static/js/jquery.wmd.min.js"/>
-
-<script>
-    \$().ready(function() {
-       \$("textarea.wmd").wmd();
-    });
-</script>
--->
-
-</script>
