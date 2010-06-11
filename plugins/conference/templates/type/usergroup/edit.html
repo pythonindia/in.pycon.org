@@ -1,0 +1,42 @@
+$def with (page)
+
+$var title: Editing page.key
+
+<form name="edit" method="post" action="">
+<div class="hidden">
+$:macros.TypeChanger(page.type)
+</div>
+
+<div class="formElement">
+    <div class="label"><label for="description">Description:</label></div>
+    <div class="input">
+        <textarea id="description" name="description" rows="5" cols="80" style="height: 200px;">$page.description</textarea>
+    </div>
+</div>
+
+<div class="formElement">
+    <div class="label"><label for="members#0">Members:</label></div>
+    <div class="input">
+        $for i, m in enumerate(page.members):
+            <input id="members#$i" type="text" name="members#$i" value="$page.members[i].key" style="margin: 3px 0px;"/>
+        $for i in range(len(page.members), len(page.members)+5):
+            <input id="members#$i" type="text" name="members#$i" value="" style="margin: 3px 0px;"/>
+    </div>
+</div>
+
+<div class="formElement">
+    <div class="label">
+        <label for="comment">Edit Summary:</label>
+    </div>
+    <div class="input">
+        <input type="text" id="comment" name="_comment" value="$page.comment_" rows="15" style="width: 100%"/>
+    </div>
+</div>
+
+<div style="margin: 10px 0px;">
+<input type="submit" name='_save' value="Save" />
+<a href="$changequery(m=None)" class="red">Cancel</a>
+<button tabindex="0" class="right" id="delete" title="Delete Record" name="_delete" value="Delete Record" type="submit">Delete Page</button>
+
+</div>
+</form>
