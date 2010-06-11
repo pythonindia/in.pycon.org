@@ -16,11 +16,13 @@ form_talk = Form(
     Textbox("duration", notnull),
     Textbox("authors", notnull),
     Textbox("contact", notnull, regexp(re_email, "Please enter a valid email address.")),
+    Textarea("profile", notnull),
     Textbox("level", notnull),
     Textbox("topic", notnull),
     Textbox("tags"),
     Textarea("summary", notnull),
-    Textarea("description"),    
+    Textarea("outline"),    
+    Textarea("notes"),    
 )
 
 class submit_talk(delegate.page):

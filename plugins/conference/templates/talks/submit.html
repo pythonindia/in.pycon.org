@@ -108,6 +108,18 @@ $code:
             <span class="note">$form.contact.note</span>
         </div>
     </div>
+    
+    <div class="formElement">
+        <div class="label">
+            <label for="profile">Profile of Authors</label>
+            <span class="smaller lighter">Some info about each author, with links to blogs etc.</span>
+            <span class="note">$form.profile.note</span>
+        </div>
+        <div class="input">
+            <textarea name="profile" id="profile" class="wmd" rows="10">$form.profile.value</textarea>
+        </div>
+    </div>
+    
 
     <div class="formElement">
         <div class="label"></div>
@@ -121,20 +133,32 @@ $code:
             <span class="note">$form.summary.note</span>
         </div>
         <div class="input">
-            <textarea name="summary" id="summary" class="wmd" rows="10">$form.summary.value</textarea>
+            <textarea name="summary" id="summary" class="wmd" rows="15">$form.summary.value</textarea>
         </div>
     </div>
 
     <div class="formElement">
         <div class="label">
-            <label for="description">Description</label>
+            <label for="outline">Outline</label>
             <span class="smaller lighter">Describe your talk in detail for reviewers.</span>
-            <span class="note">$form.description.note</span>            
+            <span class="note">$form.outline.note</span>            
         </div>
         <div class="input">
-            <textarea name="description" id="description" class="wmd" rows="10">$form.description.value</textarea>
+            <textarea name="outline" id="outline" class="wmd" rows="10">$form.outline.value</textarea>
         </div>
     </div>
+
+    <div class="formElement">
+        <div class="label">
+            <label for="notes">Notes</label>
+            <span class="smaller lighter">Anything else that you want to let the review committee know about your talk?</span>
+            <span class="note">$form.notes.note</span>
+        </div>
+        <div class="input">
+            <textarea name="notes" id="notes" class="wmd" rows="5">$form.notes.value</textarea>
+        </div>
+    </div>
+
 
     <div class="formElement">
         <div class="label">
