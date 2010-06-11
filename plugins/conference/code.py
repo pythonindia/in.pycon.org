@@ -20,6 +20,7 @@ form_talk = Form(
     Textbox("topic", notnull),
     Textbox("tags"),
     Textarea("summary", notnull),
+    Textarea("description"),    
 )
 
 class submit_talk(delegate.page):

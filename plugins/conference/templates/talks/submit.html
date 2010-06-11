@@ -25,9 +25,10 @@ $code:
     Web programming
     Mobile computing
     Open source Python projects
-    Other
     """
-    topics = [("", "Please select a topic")] + [line.strip() for line in topics.strip().split("\n")]
+    topics = [line.strip() for line in topics.strip().split("\n")]
+    topics.sort()
+    topics = [("", "Please select a topic")] + topics + ["None of the above"]
 
 <form method="POST" class="">
     <div class="formElement">
@@ -116,10 +117,22 @@ $code:
     <div class="formElement">
         <div class="label">
             <label for="summary">Summary</label>
-            <span class="note">$form.summary.note</span>            
+            <span class="smaller lighter">Summary of your talk in less than 100 words.</span>
+            <span class="note">$form.summary.note</span>
         </div>
         <div class="input">
             <textarea name="summary" id="summary" class="wmd" rows="10">$form.summary.value</textarea>
+        </div>
+    </div>
+
+    <div class="formElement">
+        <div class="label">
+            <label for="description">Description</label>
+            <span class="smaller lighter">Describe your talk in detail for reviewers.</span>
+            <span class="note">$form.description.note</span>            
+        </div>
+        <div class="input">
+            <textarea name="description" id="description" class="wmd" rows="10">$form.description.value</textarea>
         </div>
     </div>
 
