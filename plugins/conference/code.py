@@ -3,6 +3,9 @@ from infogami.utils.view import render, add_flash_message
 from infogami import config
 import web
 from web.form import Form, Textbox, Textarea, notnull, regexp
+import os
+import time
+import simplejson
 
 def render_template(name, *a, **kw):
     if "." in name:
@@ -47,4 +50,17 @@ class submit_talk(delegate.page):
                 subject=web.safestr(email.subject.strip()),
                 message=web.safestr(email)
             )
+
+        dir = config.get("talks_dir", "/tmp/talks")
+        write("%s/%s.txt" % (dir, time.time()), simplejson.dumps(i))
+
         return render_template("talks/submitted")
+
+def write(path, text):
+    dirname = os.path.dirname(path)
+    if not os.path.exists(dirname):
+        os.makedirs(dirname)
+
+    f = open(path, 'w')
+    f.write(text)
+    f.close()
