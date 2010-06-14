@@ -370,3 +370,7 @@ span.note {
 option {
     padding: 0px 3px;
 }
+
+p {
+    margin: 5px 0px;
+}
