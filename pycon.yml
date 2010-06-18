@@ -2,7 +2,7 @@
 db_parameters:
     engine: "postgres"
     database: "pycon"
-    username: "anand"
+    username: "ideamonk"
     password: ""
 
 plugins:
