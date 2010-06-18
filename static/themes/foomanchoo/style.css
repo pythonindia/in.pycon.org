@@ -28,7 +28,9 @@ body {
 	background: url(images/new_head.png) left 0px no-repeat;
 }
 
-#content { background:#f7f3e3 url(images/corny.gif) bottom left repeat-x; margin:0px 10px; overflow:hidden; padding-bottom:20px; clear: both;}
+#content{ background:#f7f3e3 url(images/corny.gif) bottom left repeat-x; margin:0px 10px; overflow:hidden; padding-bottom:20px; clear: both;}
+#slideshow {  background:#d7cdac url(images/corny.gif) top left repeat-x;  margin:0px 10px; overflow:hidden; clear: both;}
+#slide-content { padding:10px; background:url(images/corny2.gif) bottom left repeat-x; }
 #footer {
     padding:10px;
     padding-right: 50px;
@@ -37,7 +39,7 @@ body {
     color: #6d8f9e;
     font-size:0.9em;
     background:#d7cdac;
-    margin:0px 10px;
+    margin:0px 10px 30px 10px;
 }
 #footer a { color:#000000; }
 
@@ -77,40 +79,45 @@ body {
 }
 
 /* 			contents 			*/
-#contents { width: 660px; }
+#contents { width: 660px; padding:20px; }
 #contents p p{
 	padding: 10px 0px 15px 30px;
 }
 
 #contents h1, #contents h2, #contents h3, #contents h4 {
-	color:#9c6038;
+	color:#a74738;
+    font-family: Georgia;
+    font-weight:normal;
 }
-
+#contents h1{color:#3c5065; }
 h1 {
-	font-size: 1.5em;
-	margin-top:15px;
+	font-size: 2.8em;
 	margin-bottom: 15px;
+    padding:10px 5px;
+/*     border-bottom:1px dotted #d7cdac; */
+    background: url(images/dots.gif) bottom left repeat-x;
+    display:inline-block;
+
 }
 
 h2 {
-	font-size: 1.3em;
+    color:;
+	font-size: 1.7em;
 	margin-top:15px;
 	margin-bottom: 10px;
 }
 
 h3 {
-    font-size: 1.2em;
+    font-size: 1.3em;
     margin: 5px 0px;
 }
 
 h4 {
-    font-size: 1.1em;
+    font-size: 1.2em;
     margin: 5px 0px;
 }
 
 h1,h2,h3,h4 {
-    font-family: "Fontin Sans Rg";
-    font-weight: bold;
 }
 
 /* account links */
