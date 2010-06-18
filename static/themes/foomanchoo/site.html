@@ -4,50 +4,21 @@ $def with (page)
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>$page.title - PyCon India 2010</title>
-    <link rel="stylesheet" type="text/css" href="$homepath()/static/themes/foomanchoo/style.css" />
+    <link rel="stylesheet" type="text/css" href="$homepath()/static/themes/alankar/style.css" />
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
     <script type="text/javascript" src="$homepath()/static/themes/alankar/jquery.countdown.min.js"></script>
-
-    <link href="$homepath()/static/wmd.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="$homepath()/static/js/jquery.wmd.min.js"></script>
-
+    <script type="text/javascript" src="$homepath()/static/themes/alankar/cufon-yui.js"></script>
+    <script type="text/javascript" src="$homepath()/static/themes/alankar/fonts/Fontin_Sans_Rg_400.font.js"></script>
     <script type="text/javascript">
-
-    \$(document).ready( function(){
-        \$("textarea.wmd").wmd({
-            "preview": true,
-            "helpLink": "http://daringfireball.net/projects/markdown/",
-            "helpHoverTitle": "Markdown Help"
-        });
-    });
-
-
-        \$(document).ready( function(){
-            // setup countdown
-            var pyconDate = new Date();
-            pyconDate = new Date("2010/09/25");
-            \$('#defaultCountdown').countdown({
-                until: pyconDate,
-                format: 'DHMS',
-                layout: '<div id="t7_timer">'+
-                            '<div id="t7_vals">'+
-                                '<div id="t7_d" class="t7_numbs">{dnn}</div>'+
-                                '<div id="t7_h" class="t7_numbs">{hnn}</div>'+
-                                '<div id="t7_m" class="t7_numbs">{mnn}</div>'+
-                                '<div id="t7_s" class="t7_numbs">{snn}</div>'+
-                            '</div>'+
-                            '<div id="t7_labels">'+
-                                '<div id="t7_dl" class="t7_labs">days</div>'+
-                                '<div id="t7_hl" class="t7_labs">hours</div>'+
-                                '<div id="t7_ml" class="t7_labs">mins</div>'+
-                                '<div id="t7_sl" class="t7_labs">secs</div>'+
-                            '</div>'+
-                            '<div id="t7_timer_over"></div>'+
-                        '</div>'
-            });
-        });
+        Cufon.replace('#nav');
+        Cufon.replace('#contents h1');
+        Cufon.replace('#contents h2');
+        Cufon.replace('#contents h3');
+        Cufon.replace('#contents h4');
     </script>
+
+    <script type="text/javascript" src="$homepath()/static/themes/alankar/countdown.js"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -65,7 +36,7 @@ $def with (page)
 
             <div id="nav">
                 <ul>
-                    <li class='nav_start'>
+                    <li>
                         <a href="$homepath()/">
                             Home
                         </a>
@@ -82,9 +53,6 @@ $def with (page)
                     <li>
                         <a href="$homepath()/faq">FAQ</a>
                     </li>
-                    <li class='nav_end'>
-                        &nbsp;
-                    </li>
                 </ul>
             </div>
         </div>
@@ -92,30 +60,29 @@ $def with (page)
 
         <div id="content">
             <div id="sidebar">
-                <h3>Venue Sponspor</h3>
+                <h3>Platinum Sponspors</h3>
                 <p>
-                    <a href="http://www.msrit.edu/"><img class="sponsor" src="$homepath()/static/images/sponsors/msrit.jpg" alt="M. S. Ramaiah Institute of Technology" title="M. S. Ramaiah Institute of Technology"/></a>
+                    <img class="sponsor" src="http://placehold.it/120x80&text=Sponsor" alt="" title=""/>
                 </p>
-                <!--
+
                 <h3>Gold Sponspors</h3>
                 <p>
-                    <img class="sponsor" src="$homepath()/static/images/sponsor.jpg" alt="" title=""/>
+                    <img class="sponsor" src="http://placehold.it/120x80&text=Sponsor" alt="" title=""/>
                 </p>
                 <p>
-                    <img class="sponsor" src="$homepath()/static/images/sponsor.jpg" alt="" title=""/>
+                    <img class="sponsor" src="http://placehold.it/120x80&text=Sponsor" alt="" title=""/>
                 </p>
 
                 <h3>Silver Sponspors</h3>
                 <p>
-                    <img class="sponsor" src="$homepath()/static/images/sponsor.jpg" alt="" title=""/>
+                    <img class="sponsor" src="http://placehold.it/120x80&text=Sponsor" alt="" title=""/>
                 </p>
                 <p>
-                    <img class="sponsor" src="$homepath()/static/images/sponsor.jpg" alt="" title=""/>
+                    <img class="sponsor" src="http://placehold.it/120x80&text=Sponsor" alt="" title=""/>
                 </p>
                 <p>
-                    <img class="sponsor" src="$homepath()/static/images/sponsor.jpg" alt="" title=""/>
+                    <img class="sponsor" src="http://placehold.it/120x80&text=Sponsor" alt="" title=""/>
                 </p>
-                -->
             </div>
             <!-- end of sidebar -->
 
