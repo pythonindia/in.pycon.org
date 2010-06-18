@@ -8,13 +8,18 @@ $def with (page)
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
     <script type="text/javascript" src="$homepath()/static/themes/alankar/jquery.countdown.min.js"></script>
-
+    <script type="text/javascript" src="$homepath()/static/js/jquery/jquery.cycle.lite.min.js"></script>
     <link href="$homepath()/static/wmd.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="$homepath()/static/js/jquery.wmd.min.js"></script>
 
     <script type="text/javascript">
 
     \$(document).ready( function(){
+        \$('#slide-content').cycle({
+            fx:    'fade',
+            speed:  2500
+        });
+
         \$("textarea.wmd").wmd({
             "preview": true,
             "helpLink": "http://daringfireball.net/projects/markdown/",
@@ -92,7 +97,12 @@ $def with (page)
         $if page.title == "Home":
             <div id="slideshow">
                 <div id="slide-content">
-                    foo
+                    <img src="$homepath()/static/images/slideshow/1.jpg" height="180" width="880" />
+                    <img src="$homepath()/static/images/slideshow/2.jpg" height="180" width="880" />
+                    <img src="$homepath()/static/images/slideshow/3.jpg" height="180" width="880" />
+                    <img src="$homepath()/static/images/slideshow/7.jpg" height="180" width="880" />
+                    <img src="$homepath()/static/images/slideshow/5.jpg" height="180" width="880" />
+                    <img src="$homepath()/static/images/slideshow/6.jpg" height="180" width="880" />
                 </div>
             </div>
         <div id="content">
