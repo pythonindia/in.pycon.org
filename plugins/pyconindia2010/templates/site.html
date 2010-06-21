@@ -6,6 +6,10 @@ $def with (page)
     <title>$page.title - PyCon India 2010</title>
     <link rel="stylesheet" type="text/css" href="$homepath()/static/themes/foomanchoo/style.css" />
 
+    <script type="text/javascript" src="$homepath()/static/themes/alankar/cufon-yui.js"></script>
+    <script type="text/javascript" src="$homepath()/static/themes/foomanchoo/fonts/Georgia_400-Georgia_700.font.js"></script>
+    <script type="text/javascript">
+
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
     <script type="text/javascript" src="$homepath()/static/themes/alankar/jquery.countdown.min.js"></script>
     <script type="text/javascript" src="$homepath()/static/js/jquery/jquery.cycle.lite.min.js"></script>
@@ -15,6 +19,12 @@ $def with (page)
     <script type="text/javascript">
 
     \$(document).ready( function(){
+        Cufon.replace('#nav');
+        Cufon.replace('#contents h1');
+        Cufon.replace('#contents h2');
+        Cufon.replace('#contents h3');
+        Cufon.replace('#contents h4');
+
         \$('#slide-content').cycle({
             fx:    'fade',
             speed:  2500

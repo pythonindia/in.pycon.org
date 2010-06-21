@@ -13,7 +13,7 @@
 
 body {
     line-height: 1.3em;
-    font-family: Arial, Helvetica, sans-serif; font-size: 12px;
+    font-family: Helvetica, arial, sans-serif;
     font-size: 12px;
  	background: #15396d url(images/bg-new.jpg) top center no-repeat;
 }
@@ -87,7 +87,7 @@ img, a { border:none; }
 
 #contents h1, #contents h2, #contents h3, #contents h4 {
 	color:#a74738;
-    font-family: Georgia;
+    font-family: Georgia, "Times New Roman", serif;
     font-weight:normal;
 }
 #contents h1{color:#3c5065; }
