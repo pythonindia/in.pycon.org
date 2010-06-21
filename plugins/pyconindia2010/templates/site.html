@@ -23,6 +23,8 @@ $def with (page)
     <script type="text/javascript">
 
     \$(document).ready( function(){
+//         \$('#slide-content img').css({'display':'block'});
+        // ^^ should help non js browsers display only one slide
         \$('#slide-content').cycle({
             fx:    'fade',
             speed:  2500
@@ -115,7 +117,7 @@ $def with (page)
         $if page.title == "Home":
             <div id="slideshow">
                 <div id="slide-content">
-                    <img src="$homepath()/static/images/slideshow/1.jpg" height="180" width="880" />
+                    <img class='visible' src="$homepath()/static/images/slideshow/1.jpg" height="180" width="880" />
                     <img src="$homepath()/static/images/slideshow/2.jpg" height="180" width="880" />
                     <img src="$homepath()/static/images/slideshow/3.jpg" height="180" width="880" />
                     <img src="$homepath()/static/images/slideshow/7.jpg" height="180" width="880" />

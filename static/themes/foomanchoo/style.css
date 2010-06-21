@@ -31,7 +31,9 @@ img, a { border:none; }
 #content{ background:#f7f3e3 url(images/corny.gif) bottom left repeat-x; margin:0px 10px; overflow:hidden; padding-bottom:20px; clear: both;}
 #slideshow {  background:#f7f3e3;  margin:0px 10px; overflow:hidden; clear: both;}
 #slide-content { padding:0px 0px 4px 0px; height:180px; background:url(images/wcorny3.gif) bottom left repeat-x; }
-#slide-content img { margin-top:0px; }
+#slide-content img { margin-top:0px; display:none;}
+#slide-content .visible { display:block; }
+
 #footer {
     padding:10px;
     padding-right: 50px;
