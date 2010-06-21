@@ -23,12 +23,6 @@ $def with (page)
     <script type="text/javascript">
 
     \$(document).ready( function(){
-        Cufon.replace('#nav');
-        Cufon.replace('#contents h1');
-        Cufon.replace('#contents h2');
-        Cufon.replace('#contents h3');
-        Cufon.replace('#contents h4');
-
         \$('#slide-content').cycle({
             fx:    'fade',
             speed:  2500
@@ -39,6 +33,12 @@ $def with (page)
             "helpLink": "http://daringfireball.net/projects/markdown/",
             "helpHoverTitle": "Markdown Help"
         });
+
+        Cufon.replace('#nav');
+        Cufon.replace('#contents h1');
+        Cufon.replace('#contents h2');
+        Cufon.replace('#contents h3');
+        Cufon.replace('#contents h4');
     });
 
     /*
