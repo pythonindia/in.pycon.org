@@ -17,7 +17,7 @@ body {
     font-size: 12px;
  	background: #15396d url(images/bg-new.jpg) top center no-repeat;
 }
-
+img, a { border:none; }
 /* 			Layout elements 		*/
 #wrapper {
 	margin:0px auto;
