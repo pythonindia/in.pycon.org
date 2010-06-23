@@ -129,7 +129,7 @@ $def with (page)
             <div id="sidebar">
                 $if page.title == "Call For Conference Talk Proposals":
                     <div id="cfpjump">
-                        <a href="$homepath()/talks/submit"> Jump to CFP Submission </a>
+                        <a href="#"> Jump to CFP Submission </a>
                     </div>
                 <h3>Venue Sponspor</h3>
                 <p>

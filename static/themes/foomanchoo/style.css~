@@ -165,7 +165,7 @@ h1,h2,h3,h4 {
 /*          misc elements       */
 /* cfp jump button */
 #cfpjump {
-    font-family:Georgia, "Times New Roman", serif;
+    
     color:#ffffff;
     background:#d7cdac url(images/corny2.gif) left bottom repeat-x;
     display:block;
