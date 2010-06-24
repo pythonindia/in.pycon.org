@@ -165,9 +165,12 @@ h1,h2,h3,h4 {
 /*          misc elements       */
 /* cfp jump button */
 #cfpjump {
+    border: 3px double #a74738; background-color: #ddddff; color:
+    black; font-weight: bold; text-align: center;
+                    
     font-family:Georgia, "Times New Roman", serif;
-    color:#ffffff;
-    background:#d7cdac url(images/corny2.gif) left bottom repeat-x;
+/*     color:#a74738; */
+/*     background:#d7cdac ; */
     display:block;
     margin:20px 0px 20px 30px;
     padding:10px;
