@@ -28,7 +28,8 @@ form_talk = Form(
     Textbox("tags"),
     Textarea("summary", notnull,
         Validator("Summary should be at least 10 words or more", lambda i: len(i.split())>=10)),
-    Textarea("outline"),    
+    Textarea("outline", notnull,
+        Validator("Outline should be at least 100 words or more", lambda i: len(i.split())>=100))),
     Textarea("notes"),
 )
 
