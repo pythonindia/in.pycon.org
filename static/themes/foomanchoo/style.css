@@ -67,31 +67,33 @@ img, a { border:none; }
 
 /* 			 Navigation 			*/
 #nav { padding-top:20px; }
-#nav ul { margin-top:80px; background: url(images/nav.gif) repeat-x; }
-#nav ul li {
-	list-style:none;
+#nav_spacer { height:62px; margin-top:80px; background: url(images/nav.gif) repeat-x; }
+#nav_spacer div {
 	display:inline-block;
-	text-align:left;
+	text-align:center;
 	font-family: Arial, Helvetica, sans-serif;
 	padding:20px 20px 10px 20px;
-    height:32px;
 }
-#nav ul li a {
+#nav_spacer div a {
 	text-decoration:none;
 	color:#ffffff;
     font-size:14px;
 }
-#nav ul li a:visited {
+#nav_spacer div a:visited {
     color:#ffffff;
 }
-#nav ul li a:hover { color:#ffff99; }
-#nav ul li.nav_start {
-    margin-left:-40px;
+#nav_spacer div a:hover { color:#ffff99; }
+#nav_spacer div.nav_start {
+    float:left;
+    margin-left:0px;
+    height:32px;
     background:url(images/nav-left.gif) left top no-repeat;
 }
-#nav ul li.nav_end {
+#nav_spacer div.nav_end {
     float:right;
+    height:32px;
     background:url(images/nav-right.gif) right top no-repeat;
+    margin-right:0px;
 }
 
 /* 			sidebar styling 			*/
