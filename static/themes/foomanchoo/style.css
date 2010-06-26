@@ -169,10 +169,8 @@ h1,h2,h3,h4 {
     black; font-weight: bold; text-align: center;
                     
     font-family:Georgia, "Times New Roman", serif;
-/*     color:#a74738; */
-/*     background:#d7cdac ; */
     display:block;
-    margin:20px 0px 20px 30px;
+    margin:20px 30px 20px 30px;
     padding:10px;
 }
 
