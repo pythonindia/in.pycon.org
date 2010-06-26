@@ -1,0 +1,54 @@
+$def with (talk)
+
+$var title: $talk.title
+
+$:macros.TalkNavigation()
+
+<style type="text/css">
+    .label {
+        font-weight: bold;
+    }
+</style>
+
+<table>
+    <tr>
+        <td class="label">Authors</td>
+        <td class="value">$talk.authors</td>
+    </tr>
+
+    <tr>
+        <td class="label">Level</td>
+        <td class="value"><a href="$homepath()/talks?level=$talk.level">$talk.level</a></td>
+    </tr>
+
+    <tr>
+        <td class="label">Topic</td>
+        <td class="value"><a href="$homepath()/talks?topic=$talk.topic">$talk.topic</a></td>
+    </tr>
+
+    <tr>
+        <td class="label">Tags</td>
+        <td class="value">$talk.tags</td>
+    </tr>
+</table>    
+
+<div>
+    <div class="label">Summary</div>
+    <div>$:format(talk.summary.strip())</div>
+</div>
+
+<div>
+    <div class="label">Outline</div>
+    <div>$:format(talk.outline.strip())</div>
+</div>
+
+<div>
+    <div class="label">Notes</div>
+    <div>$:format(talk.notes.strip())</div>
+</div>
+
+<div>
+    <div class="label">Profile of the authors</div>
+    <div>$:format(talk.profile.strip())</div>
+</div>
+

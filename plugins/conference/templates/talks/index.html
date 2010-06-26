@@ -1,0 +1,10 @@
+$def with (items)
+
+$var title: Talks
+
+$:macros.TalkNavigation()
+
+<ul>
+$for key, talk in items:
+    <li><a href="/$key">$talk['title']</a> - <i>$talk.get('authors')</i></li>
+</ul>
