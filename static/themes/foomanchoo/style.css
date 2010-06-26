@@ -95,7 +95,9 @@ img, a { border:none; }
     background:url(images/nav-right.gif) right top no-repeat;
     margin-right:0px;
 }
-
+#nav_spacer div.nav_first{
+    padding-left:0px;
+}
 /* 			sidebar styling 			*/
 #sidebar {
 	float:right;
