@@ -1,11 +1,14 @@
+# -*- coding: utf-8 -*-
 from infogami.utils import delegate
 from infogami.utils.view import render, add_flash_message
 from infogami import config
 import web
-from web.form import Form, Textbox, Textarea, notnull, regexp
+from web.form import Form, Textbox, Textarea, notnull, regexp, Validator
 import os
 import time
 import simplejson
+
+from tools import captcha
 
 def render_template(name, *a, **kw):
     if "." in name:
@@ -25,7 +28,11 @@ form_talk = Form(
     Textbox("tags"),
     Textarea("summary", notnull),
     Textarea("outline"),    
-    Textarea("notes"),    
+    Textarea("notes"),
+    validators = [
+        Validator("Summary should be at least 10 words or more",
+                                        lambda i: len(i.summary.split())>=10)
+    ]
 )
 
 class submit_talk(delegate.page):
