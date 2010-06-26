@@ -363,6 +363,11 @@ img.sponsor {
     background: #ffaaaa;
     border: 1px solid #ff8888;
 }
+.info {
+    padding: 5px;
+    background: #F7E3A3;
+    border: 1px solid #D7C383; 
+}
 
 .formElement input[type=text], .formElement select {
     width: 500px;
