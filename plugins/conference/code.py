@@ -26,9 +26,9 @@ form_talk = Form(
     Textbox("topic", notnull),
     Textbox("tags"),
     Textarea("summary", notnull,
-        Validator("Summary should be at least 10 words or more", lambda i: len(i.split())>=10)),
+        Validator("Summary should have at least 10 words", lambda i: len(i.split())>=10)),
     Textarea("outline", notnull,
-        Validator("Outline should be at least 100 words or more", lambda i: len(i.split())>=100)),
+        Validator("Outline should have at least 25 words", lambda i: len(i.split())>=25)),
     Textarea("notes"),
 )
 
