@@ -40,15 +40,22 @@ class submit_talk(delegate.page):
     
     def GET(self):
         f = form_talk()
-        return render_template("talks/submit", f)
+        c = captcha.displayhtml(public_key="6LeHGbsSAAAAAPwlmoQCVUYlP_vip_iXv5vAAcEN")
+        return render_template("talks/submit", form=f, captcha=c)
         
     def POST(self):
         i = web.input()
         f = form_talk()
         
         if not f.validates(i):
-            return render_template("talks/submit", f)
-        
+            c = captcha.displayhtml(public_key="6LeHGbsSAAAAAPwlmoQCVUYlP_vip_iXv5vAAcEN")
+            return render_template("talks/submit", form=f, captcha=c)
+
+        if not captcha.submit( i.recaptcha_challenge_field, i.recaptcha_response_field,
+                                    "6LeHGbsSAAAAANlVLj-gvWA5mkv1ztTnoJJcJYRv", web.ctx.ip).is_valid:
+            c = captcha.displayhtml(public_key="6LeHGbsSAAAAAPwlmoQCVUYlP_vip_iXv5vAAcEN")
+            return render_template("talks/submit", form=f, captcha=c, captcha_error = "Are you human?")
+                
         if config.get('from_address') and config.get('talk_submission_contact'):
             email = render_template("talks/email", i)
             web.sendmail(
