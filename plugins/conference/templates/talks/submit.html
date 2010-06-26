@@ -1,4 +1,4 @@
-$def with (form, captcha="", captcha_error="")
+$def with (form)
 
 $var title: Submit a talk
 
@@ -159,11 +159,6 @@ $code:
         <div class="input">
             <textarea name="notes" id="notes" class="wmd" rows="5">$form.notes.value</textarea>
         </div>
-    </div>
-
-    <div class="formElement">
-        $:captcha
-        <span class="note">$:captcha_error</span>
     </div>
     
     <div class="formElement">

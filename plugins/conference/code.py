@@ -8,8 +8,6 @@ import os
 import time
 import simplejson
 
-from tools import captcha
-
 @public
 def render_template(name, *a, **kw):
     if "." in name:
@@ -54,23 +52,15 @@ class submit_talk(delegate.page):
     
     def GET(self):
         f = form_talk()
-        c = captcha.displayhtml(public_key="6LeHGbsSAAAAAPwlmoQCVUYlP_vip_iXv5vAAcEN")
-        return render_template("talks/submit", form=f, captcha=c)
+        return render_template("talks/submit", form=f)
         
     def POST(self):
         i = web.input()
         f = form_talk()
         
         if not f.validates(i):
-            c = captcha.displayhtml(public_key="6LeHGbsSAAAAAPwlmoQCVUYlP_vip_iXv5vAAcEN")
-            return render_template("talks/submit", form=f, captcha=c)
+            return render_template("talks/submit", form=f)
 
-        if not captcha.submit( i.recaptcha_challenge_field, i.recaptcha_response_field,
-                                    "6LeHGbsSAAAAANlVLj-gvWA5mkv1ztTnoJJcJYRv", web.ctx.ip).is_valid:
-            c = captcha.displayhtml(public_key="6LeHGbsSAAAAAPwlmoQCVUYlP_vip_iXv5vAAcEN")
-            return render_template("talks/submit", form=f, captcha=c, captcha_error = "Are you human?")
-                
-            
         key = new_talk(i)
         
         if config.get('from_address') and config.get('talk_submission_contact'):
