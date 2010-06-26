@@ -26,13 +26,10 @@ form_talk = Form(
     Textbox("level", notnull),
     Textbox("topic", notnull),
     Textbox("tags"),
-    Textarea("summary", notnull),
+    Textarea("summary", notnull,
+        Validator("Summary should be at least 10 words or more", lambda i: len(i.split())>=10)),
     Textarea("outline"),    
     Textarea("notes"),
-    validators = [
-        Validator("Summary should be at least 10 words or more",
-                                        lambda i: len(i.summary.split())>=10)
-    ]
 )
 
 class submit_talk(delegate.page):
