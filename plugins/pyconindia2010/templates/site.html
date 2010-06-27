@@ -149,21 +149,10 @@ $def with (page)
             <div id="sidebar">
                 <h3>Venue Sponsor</h3>
                 <p>
-                    <a href="http://www.msrit.edu/"><img class="sponsor" src="$homepath()/static/images/sponsors/msrit.jpg" alt="M. S. Ramaiah Institute of Technology" title="M. S. Ramaiah Institute of Technology"/></a>
+                    <a href="http://www.msrit.edu/"  title="M. S. Ramaiah Institute of Technology"><img class="sponsor" src="$homepath()/static/images/msrit.jpg" alt="MSRIT logo"/></a>
                 </p>
                 <!--
-                <h3>Gold Sponspors</h3>
-                <p>
-                    <img class="sponsor" src="$homepath()/static/images/sponsor.jpg" alt="" title=""/>
-                </p>
-                <p>
-                    <img class="sponsor" src="$homepath()/static/images/sponsor.jpg" alt="" title=""/>
-                </p>
-
-                <h3>Silver Sponspors</h3>
-                <p>
-                    <img class="sponsor" src="$homepath()/static/images/sponsor.jpg" alt="" title=""/>
-                </p>
+                <h3>Gold Sponsors</h3>
                 <p>
                     <img class="sponsor" src="$homepath()/static/images/sponsor.jpg" alt="" title=""/>
                 </p>
@@ -171,6 +160,11 @@ $def with (page)
                     <img class="sponsor" src="$homepath()/static/images/sponsor.jpg" alt="" title=""/>
                 </p>
                 -->
+
+                <h3>Silver Sponsor</h3>
+                <p>
+                    <a href="http://www.python.org/psf/" title="Python Software Foundation"><img class="sponsor" src="$homepath()/static/images/python-logo.png" alt="PSF logo"/></a>
+                </p>
             </div>
             <!-- end of sidebar -->
 
@@ -180,7 +174,7 @@ $def with (page)
                         <div class="$flash.type"><span>$flash.message</span></div>
                         <div class="clearfix"></div>
                 </div>
-
+                
                 $if page.title != "Home":
                     <h1>$page.title</h1>
                 $:page

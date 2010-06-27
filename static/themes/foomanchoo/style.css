@@ -10,7 +10,7 @@
 body {
     line-height: 1.3em;
     font-family: Helvetica, arial, sans-serif;
-    font-size: 12px;
+    font-size: 14px;
  	background: #15396d url(images/bg-new.jpg) top center no-repeat;
 }
 
@@ -58,7 +58,7 @@ img, a { border:none; }
     clear:both;
     text-align:center;
     color: #6d8f9e;
-    font-size:0.9em;
+    font-size:0.8em;
     background:#d7cdac;
     margin:0px 10px 30px 10px;
 }
@@ -111,7 +111,7 @@ img, a { border:none; }
 }
 
 /* 			contents 			*/
-#contents { width: 660px; padding:20px; }
+#contents { width: 620px; padding:20px; }
 #contents p p{
 	padding: 10px 0px 15px 30px;
 }
@@ -123,7 +123,7 @@ img, a { border:none; }
 }
 #contents h1{color:#3c5065; }
 h1 {
-	font-size: 2.4em;
+	font-size: 1.875em;
 	margin-bottom: 15px;
     padding:10px 5px;
 /*     border-bottom:1px dotted #d7cdac; */
@@ -133,7 +133,7 @@ h1 {
 }
 
 h2 {
-	font-size: 1.6em;
+	font-size: 1.5em;
 	margin-top:15px;
 	margin-bottom: 10px;
 }
@@ -350,6 +350,7 @@ h1,h2,h3,h4 {
 
 img.sponsor {
     padding: 5px;
+    max-width: 180px;
 }
 
 #dateline {
