@@ -1,0 +1,15 @@
+$def with (f)
+
+$ _ = i18n.get_namespace('/account/login')
+
+$var title: $_.login
+
+<p>If you are an admin, login to manage the website.</p>
+
+<form name="login" method="POST">
+$:f.render()
+    <input type="submit" name="submit" value="$_.login">
+</form>
+
+<p><a href="$homepath()/account/forgot_password">$_.forgot_password</a></p>
+
