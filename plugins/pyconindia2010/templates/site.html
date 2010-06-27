@@ -123,8 +123,6 @@ $def with (page)
                             <form name='logout' action="$homepath()/account/logout" method='POST' style="display:none;"></form>
                             Welcome <a href="$homepath()/$ctx.user">$ctx.user.displayname</a>!
                             | <a href="#" onclick="document.forms['logout'].submit()">Log out</a>
-                        $else:
-                            <a href="$homepath()/account/login">Login</a>                            
                     </div>
                 </div>
             </div>
@@ -182,7 +180,7 @@ $def with (page)
         <!-- end of content -->
 
         <div id="footer">
-            <a href="#">Contact Us</a>
+            <a href="mailto:contact@in.pycon.org">Contact Us</a> | <a href="$homepath()/account/login">Admin</a>
             <span style="float: right">Powered by <a href="http://infogami.org/">Infogami</a></span>
         </div>
         <!-- end of content -->
