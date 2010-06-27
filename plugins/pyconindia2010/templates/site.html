@@ -91,15 +91,6 @@ $def with (page)
 <body>
     <div id="wrapper">
         <div id="header">
-            <div id="account">
-                $if ctx.user:
-                    <form name='logout' action="$homepath()/account/logout" method='POST' style="display:none;"></form>
-                    Welcome <a href="$homepath()/$ctx.user">$ctx.user.displayname</a>!
-                    | <a href="#" onclick="document.forms['logout'].submit()">Log out</a>
-                $else:
-                    <a href="$homepath()/account/login">Login</a>
-            </div>
-
             <div id="defaultCountdown"></div>
 
             <div id="nav">
@@ -127,8 +118,13 @@ $def with (page)
                     <div>
                         <a href="/2009">2009</a>
                     </div>
-                    <div class='nav_end'>
-                        &nbsp;
+                    <div class='nav_end' style="color: #ffbbbb;">
+                        $if ctx.user:
+                            <form name='logout' action="$homepath()/account/logout" method='POST' style="display:none;"></form>
+                            Welcome <a href="$homepath()/$ctx.user">$ctx.user.displayname</a>!
+                            | <a href="#" onclick="document.forms['logout'].submit()">Log out</a>
+                        $else:
+                            <a href="$homepath()/account/login">Login</a>                            
                     </div>
                 </div>
             </div>
