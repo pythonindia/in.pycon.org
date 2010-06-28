@@ -19,8 +19,7 @@ img, a { border:none; }
 /* 			Layout elements 		*/
 #wrapper {
 	margin:0px auto;
-	width:99%;
-	min-width:900px;
+	width:900px;
 }
 
 #header{
