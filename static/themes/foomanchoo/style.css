@@ -106,14 +106,17 @@ img, a { border:none; }
 /* 			sidebar styling 			*/
 #sidebar {
 	float:right;
-	width:30%;
+	width:220px;
 	padding-top:10px;
 	text-align:center;
 }
 #sidebar h2, #sidebar h3 {
-	font-family: Georgia, "Times New Roman", serif;
-	margin:8px 0px 3px 0px ;
-	color:#80888C;
+	font-family: Arial, verdana, helvetica,serif;
+	font-size:10px;
+	border-bottom:1px solid #d7cdac;
+	margin:10px 20px 0px 20px;
+	-webkit-box-shadow:1px 1px 1px #ffffff;
+	-moz-box-shadow:1px 1px 1px #ffffff;
 }
 
 /* 			contents 			*/
@@ -133,7 +136,6 @@ h1 {
 	margin-bottom: 15px;
     padding:5px 5px 0px 0px;
     border-bottom:1px solid #d7cdac;
-/*     background: url(images/dots.gif) bottom left repeat-x; */
     display:inline-block;
 
 }
