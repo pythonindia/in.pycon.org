@@ -45,7 +45,7 @@ def new_talk(talk):
 
     talk_lock.acquire()
     try:
-        index = 1 + len(web.ctx.site.store.keys(type='talk', limit=1000))
+        index = 1+ max(int(web.numify(k)) for k in web.ctx.site.store.keys(type='talk', limit=1000))
         key = "talks/%d" % index
         web.ctx.site.store[key] = talk
     finally: 
