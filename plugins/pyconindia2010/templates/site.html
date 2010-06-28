@@ -120,10 +120,7 @@ $def with (page)
                         <a href="/2009">2009</a>
                     </div>
                     <div class='nav_end' style="color: #ffbbbb;">
-                        $if ctx.user:
-                            <form name='logout' action="$homepath()/account/logout" method='POST' style="display:none;"></form>
-                            Welcome <a href="$homepath()/$ctx.user">$ctx.user.displayname</a>!
-                            | <a href="#" onclick="document.forms['logout'].submit()">Log out</a>
+                        &nbsp;
                     </div>
                 </div>
             </div>
@@ -134,7 +131,7 @@ $def with (page)
                 <div id="slide-content">
                     <img class='visible' src="$homepath()/static/images/slideshow/4.jpg" height="180" width="880" />
                     <img src="$homepath()/static/images/slideshow/2.jpg" height="180" width="880" />
-		    <img src="$homepath()/static/images/slideshow/3.jpg" height="180" width="880" />
+                    <img src="$homepath()/static/images/slideshow/3.jpg" height="180" width="880" />
                     <img src="$homepath()/static/images/slideshow/7.jpg" height="180" width="880" />
                     <img src="$homepath()/static/images/slideshow/5.jpg" height="180" width="880" />
                     <img src="$homepath()/static/images/slideshow/6.jpg" height="180" width="880" />
@@ -173,6 +170,10 @@ $def with (page)
 
         <div id="footer">
             <a href="mailto:contact@in.pycon.org">Contact Us</a> | <a href="$homepath()/account/login">Admin</a>
+            $if ctx.user:
+                | <form name='logout' action="$homepath()/account/logout" method='POST' style="display:none;"></form>
+                Welcome <a href="$homepath()/$ctx.user">$ctx.user.displayname</a>!
+                | <a href="#" onclick="document.forms['logout'].submit()">Log out</a>
             <span style="float: right">Powered by <a href="http://infogami.org/">Infogami</a></span>
         </div>
         <!-- end of content -->
