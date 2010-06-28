@@ -33,6 +33,8 @@ $code:
     topics = [("", "Please select a topic")] + topics + ["None of the above"]
 
 <form method="POST" class="">
+    $if not form.valid:
+        <h3 class='note'>Please fix the errors shown in red</h3>
     <div class="formElement">
         <div class="label">
             <label for="title">Title</label>

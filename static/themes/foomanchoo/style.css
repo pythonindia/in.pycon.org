@@ -107,6 +107,7 @@ img, a { border:none; }
 #sidebar {
 	float:right;
 	width:30%;
+	padding-top:10px;
 	text-align:center;
 }
 #sidebar h2, #sidebar h3 {
@@ -130,7 +131,7 @@ img, a { border:none; }
 h1 {
 	font-size: 1.875em;
 	margin-bottom: 15px;
-    padding:10px 5px 0px 0px;
+    padding:5px 5px 0px 0px;
     border-bottom:1px solid #d7cdac;
 /*     background: url(images/dots.gif) bottom left repeat-x; */
     display:inline-block;
