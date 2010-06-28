@@ -119,7 +119,7 @@ img, a { border:none; }
 }
 
 /* 			contents 			*/
-#contents { width: 70%; padding:20px; }
+#contents { width: 620px; padding:4px 20px 20px 20px; }
 #contents p p{
 	padding: 10px 0px 15px 30px;
 }
