@@ -125,9 +125,9 @@ img, a { border:none; }
 h1 {
 	font-size: 1.875em;
 	margin-bottom: 15px;
-    padding:10px 5px;
-/*     border-bottom:1px dotted #d7cdac; */
-    background: url(images/dots.gif) bottom left repeat-x;
+    padding:10px 5px 0px 0px;
+    border-bottom:1px solid #d7cdac;
+/*     background: url(images/dots.gif) bottom left repeat-x; */
     display:inline-block;
 
 }
