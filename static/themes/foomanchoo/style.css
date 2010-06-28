@@ -37,7 +37,7 @@ img, a { border:none; }
 
 /*          Slideshow           */
 #slideshow {
-    background:#f7f3e3 url(images/slide-back.png) top center no-repeat;
+    background:#f7f3e3;
     margin:0px 10px;
     padding-top:5px;
     overflow:hidden;
