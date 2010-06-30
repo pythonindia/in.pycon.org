@@ -4,7 +4,29 @@ $var title: Talks
 
 $:macros.TalkNavigation()
 
-<ul>
+<style type="text/css">
+    td.title {
+        width: 50%;
+    }
+    td.author, td.status {
+        width: 25%;
+    }
+    th {
+        text-align: left;
+        font-weight: bold;
+    }
+</style>
+
+<table class="talks">
+    <tr>
+        <th>Talk title</th>
+        <th>Submitted by</th>
+        <th>Status</th>
+    </tr>
 $for key, talk in items:
-    <li><a href="$homepath()/$key">$talk['title']</a> - <i>$talk.get('authors')</i></li>
-</ul>
+    <tr class="talk_review $loop.parity">
+        <td class="title"><a href="$homepath()/$key">$talk['title']</a></td>
+        <td class="author">$talk.get('authors')</td>
+        <td class="status">Under review</td>
+    </tr>
+</table>
