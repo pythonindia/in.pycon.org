@@ -430,3 +430,9 @@ option {
 p {
     margin: 5px 0px;
 }
+
+.post-line {
+    font-size: 0.8em;
+    margin-top: -10px;
+}
+}

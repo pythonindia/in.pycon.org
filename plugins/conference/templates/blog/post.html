@@ -1,0 +1,11 @@
+$def with (post)
+
+$var title: $post.title
+
+<div class="post-line">
+	$if post.author:
+		<b>By $post.author.displayname</b> -
+	Posted on $post.timestamp.strftime("%b %d, %Y at %I:%M %p")
+</div>
+
+$:format(post.body)

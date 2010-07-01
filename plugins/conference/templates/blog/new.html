@@ -1,0 +1,38 @@
+$def with (form)
+
+$var title: Create New Post
+
+<form method="POST" class="">
+    $if not form.valid:
+        <h3 class='note'>Please fix the errors shown in red</h3>
+
+    <div class="formElement">
+        <div class="label">
+            <label for="title">Title</label>
+            <span class="smaller lighter">Title of the post</span>            
+        </div>
+        <div class="input">
+            <input type="text" id="title" name="title" value="$form.title.value"/>
+            <span class="note">$form.title.note</span>
+        </div>
+    </div>
+
+    <div class="formElement">
+        <div class="label">
+            <label for="body">Body</label>
+            <span class="smaller lighter"></span>
+            <span class="note">$form.body.note</span>            
+        </div>
+        <div class="input">
+            <textarea name="body" id="body" class="wmd" rows="10">$form.body.value</textarea>
+        </div>
+    </div>
+
+    <div class="formElement">
+        <div class="label">
+        </div>
+        <div class="input">
+            <input type="submit" name="submit" value="Post"/>
+        </div>
+    </div>
+</form>

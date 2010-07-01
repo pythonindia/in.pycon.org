@@ -1,0 +1,9 @@
+$def with (title, posts)
+
+$var title: $title
+
+$for p in posts:
+	<div class="post">
+		<h2><a href='/$p.key'>$p.title</a></h2>
+		$:render_template("blog/post", p)
+	</div>
