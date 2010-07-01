@@ -21,11 +21,27 @@ class index(delegate.page):
         title = config.get("blog_title", "Blog")
         
         return render_template("blog/index", title, posts)
+
+class feed(delegate.page):
+    path = "/blog/feed.rss"
+    def GET(self):
+        posts = [process_post(post) for post in web.ctx.site.store.values(type="post")]
+        
+        # convert timestamp into the format expected by RSS
+        from infogami.core.code import feed as _feed
+        for p in posts:
+            p.timestamp = _feed()._format_date(p.timestamp)
+              
+        title = config.get("blog_title", "Blog")
+        web.header('Content-Type', 'application/rss+xml')
+        rss = render_template("blog/feed", web.ctx.home, title, posts)
+        return delegate.RawText(rss)
     
 def process_post(post):
     post = web.storage(post)
     post.timestamp = parse_datetime(post.timestamp)
     post.author = post.author and web.ctx.site.get(post.author)
+    post.url = "/%s-%s" % (post.key, post.title.replace(" ", "-"))
     return post
         
 def get_post(id):
@@ -40,7 +56,11 @@ def is_admin():
 class post(delegate.page):
     path = "/blog/(\d+)(-.*)?"
     def GET(self, id, title):
-        post = get_post(id)
+        try:
+            post = get_post(id)
+        except KeyError:
+            raise web.notfound()
+        
         title = title or ""
         title = web.lstrips(title, "-")
         if post.title != title.replace("-", " "):

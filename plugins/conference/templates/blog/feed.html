@@ -1,0 +1,27 @@
+$def with (site, title, posts)
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="$site/static/css/diff.css"?>
+<rss version="2.0" 
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+>
+    <channel>
+        <title>$title</title>
+        <link>$site/blog</link>
+        <atom:link href="$site/blog/feed.rss" rel="self" type="application/rss+xml" />
+        <description>Track the most recent changes to $site in this feed.</description>
+        <lastBuildDate>$posts[0].timestamp</lastBuildDate>
+        <generator>Infogami</generator>
+        $for p in posts:
+            <item>
+                <title>$p.title</title>
+                <link>$site$p.url</link>
+                <guid>$site/$p.key</guid>
+                <description>
+					$format(p.body)
+                </description>
+                <pubDate>$p.timestamp</pubDate>
+                <dc:creator>$(p.author and p.author.displayname)</dc:creator>
+            </item>
+    </channel>
+</rss>
