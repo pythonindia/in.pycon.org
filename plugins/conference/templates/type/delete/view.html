@@ -1,0 +1,10 @@
+$def with (page)
+
+$var title: $page.key.split("/")[-1].replace("_", " ")
+
+<p>
+This page has been deleted.
+$if ctx.user:
+    <a href="$page.key?m=edit&v=$(page.revision-1)">Recreate it</a>.
+</p>
+
