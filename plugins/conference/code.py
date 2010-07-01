@@ -8,6 +8,8 @@ import os
 import time
 import simplejson
 
+import blog
+
 try:
     import twitter
 except ImportError:
