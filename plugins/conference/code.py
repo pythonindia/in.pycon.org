@@ -107,15 +107,15 @@ class display_talk(delegate.page):
     path = "/talks/(\d+)(.*)"
     
     def GET(self, id, title):
-        title = title.lstrip("-").replace("-", " ")
+        title = title.strip("-")
         try:
             talk = web.ctx.site.store["talks/" + id]
         except KeyError:
             raise web.notfound()
             
-        xtitle = talk.get('title', 'untitled')
+        xtitle = talk.get('title', 'untitled').replace(" ", "-").stip("-")
         if xtitle != title:
-            path = "/talks/%s-%s" % (id, xtitle.replace(" ", "-"))
+            path = "/talks/%s-%s" % (id, xtitle)
             raise web.redirect(path)
             
         talk = web.storage(talk)
