@@ -56,14 +56,16 @@ def new_talk(talk):
     
 def tweet_talk(title, author, url):
     t = config.get("twitter", {})
+    print "tweet_talk", t
     if twitter and t.get('username') and t.get('password'):
         api = twitter.Api(t['username'], t['password'])
         
         # limiting title and author length to avoid crossing 140 char limit by twitter
-        title = title[:50]
-        author = author[:25]
+        title = title[:40]
+        author = author[:20]
         
         template = t.get("template", "New talk submitted: %(title)s By %(author)s %(url)s")
+        message = template % locals()
         api.PostUpdate(template % locals())
 
 class submit_talk(delegate.page):
