@@ -113,7 +113,7 @@ class display_talk(delegate.page):
         except KeyError:
             raise web.notfound()
             
-        xtitle = talk.get('title', 'untitled').replace(" ", "-").stip("-")
+        xtitle = talk.get('title', 'untitled').replace(" ", "-").strip("-")
         if xtitle != title:
             path = "/talks/%s-%s" % (id, xtitle)
             raise web.redirect(path)
