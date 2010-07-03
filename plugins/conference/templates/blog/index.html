@@ -4,6 +4,6 @@ $var title: $title
 
 $for p in posts:
 	<div class="post">
-		<h2><a href='$p.url'>$p.title</a></h2>
+		<h2><a href='$homepath()$p.url'>$p.title</a></h2>
 		$:render_template("blog/post", p)
 	</div>
