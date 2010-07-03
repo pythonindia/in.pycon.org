@@ -17,15 +17,14 @@ class index(delegate.page):
     path = "/blog"
 
     def GET(self):
-        posts = [process_post(post) for post in web.ctx.site.store.values(type="post")]
-        title = config.get("blog_title", "Blog")
-        
+        posts = get_all_posts()
+        title = config.get("blog_title", "Blog")        
         return render_template("blog/index", title, posts)
 
 class feed(delegate.page):
     path = "/blog/feed.rss"
     def GET(self):
-        posts = [process_post(post) for post in web.ctx.site.store.values(type="post")]
+        posts = get_all_posts()
         
         # convert timestamp into the format expected by RSS
         from infogami.core.code import feed as _feed
@@ -48,6 +47,10 @@ def get_post(id):
     key = "blog/%s" % id
     post = web.ctx.site.store[key]
     return process_post(post)
+
+@public
+def get_all_posts():
+    return [process_post(post) for post in web.ctx.site.store.values(type="post")]
     
 def is_admin():
     """"Returns True if the current user is in admin usergroup."""
