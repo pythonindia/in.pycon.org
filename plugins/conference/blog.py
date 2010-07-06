@@ -66,10 +66,10 @@ class post(delegate.page):
         except KeyError:
             raise web.notfound()
         
-        title = title or ""
-        ptitle = post.title.replace(" ", "-")
+        title = (title or "")[1:] # strip -
+        ptitle = post.title.replace(" ", "-").strip("-")
         if ptitle != title:
-            raise web.redirect("/blog/%s-%s" % (id, p))
+            raise web.redirect("/blog/%s-%s" % (id, ptitle))
         return render_template("blog/post", post)
 
 form_new = Form(
