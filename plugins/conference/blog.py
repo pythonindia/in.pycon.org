@@ -1,11 +1,13 @@
+import web
+from web.form import Form, Textbox, Textarea, notnull
+import datetime
+
 from infogami.utils import delegate
 from infogami.utils.view import render, add_flash_message, public, context
 from infogami.infobase.client import parse_datetime
 from infogami import config
 
-import web
-from web.form import Form, Textbox, Textarea, notnull
-import datetime
+import tweet
 
 @public
 def render_template(name, *a, **kw):
@@ -65,9 +67,9 @@ class post(delegate.page):
             raise web.notfound()
         
         title = title or ""
-        title = web.lstrips(title, "-")
-        if post.title != title.replace("-", " "):
-            raise web.redirect("/blog/%s-%s" % (id, post.title.replace(" ", "-")))
+        ptitle = post.title.replace(" ", "-")
+        if ptitle != title:
+            raise web.redirect("/blog/%s-%s" % (id, p))
         return render_template("blog/post", post)
 
 form_new = Form(
@@ -102,4 +104,5 @@ class new(delegate.page):
             "timestamp": datetime.datetime.utcnow().isoformat()
         }
         web.ctx.site.store[d['key']] = d
+        tweet.tweet("blog_template", title=d['title'], url=web.ctx.home + "/" + key)
         raise web.seeother('/' + key)

@@ -7,13 +7,10 @@ from web.form import Form, Textbox, Textarea, notnull, regexp, Validator
 import os
 import time
 import simplejson
+import tweet
 
 import blog
 
-try:
-    import twitter
-except ImportError:
-    twitter = None
 
 @public
 def render_template(name, *a, **kw):
@@ -54,20 +51,6 @@ def new_talk(talk):
         talk_lock.release()
     return key
     
-def tweet_talk(title, author, url):
-    t = config.get("twitter", {})
-    print "tweet_talk", t
-    if twitter and t.get('username') and t.get('password'):
-        api = twitter.Api(t['username'], t['password'])
-        
-        # limiting title and author length to avoid crossing 140 char limit by twitter
-        title = title[:40]
-        author = author[:20]
-        
-        template = t.get("template", "New talk submitted: %(title)s By %(author)s %(url)s")
-        message = template % locals()
-        api.PostUpdate(template % locals())
-
 class submit_talk(delegate.page):
     path = "/talks/submit"
     
@@ -96,11 +79,7 @@ class submit_talk(delegate.page):
         dir = config.get("talks_dir", "/tmp/talks")
         write("%s/%s.txt" % (dir, time.time()), simplejson.dumps(i))
         
-        try:
-            tweet_talk(i.title, i.authors, web.ctx.home + "/" + key)
-        except:
-            import traceback
-            traceback.print_exc()
+        tweet.tweet("talk_template", title=i.title, author=i.authors, url=web.ctx.home + "/" + key)
         
         add_flash_message("info", "Thanks for submitting your talk. The selection committee will review your talk and get in touch with you shortly.")
         raise web.seeother("/" + key)
