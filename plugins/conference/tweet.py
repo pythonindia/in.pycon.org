@@ -35,13 +35,23 @@ def tweet(template_name, **kw):
 
 @web.memoize
 def compile_template(text):
-    p = web.template.Parser()
+    try:
+        # web.py 0.34+
+        p = web.template.Parser()
+    except:
+        # web.py < 0.34
+        p = web.template.Parser("")
+
     code = p.readline(text)[0].emit("")
+    code = code.replace("yield '',", "").strip()
+    print code
     def f(**kw):
         def extend_(items):
             return "".join(items)
         def escape_(s, _):
             return s
+        def join_(*a): 
+            return "".join(a)
         kw.update(locals())
         return web.safestr(eval(code, kw))
     return f
