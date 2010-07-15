@@ -1,6 +1,7 @@
 import web
 from web.form import Form, Textbox, Textarea, notnull
 import datetime
+import re
 
 from infogami.utils import delegate
 from infogami.utils.view import render, add_flash_message, public, context
@@ -14,6 +15,37 @@ def render_template(name, *a, **kw):
     if "." in name:
         name = name.rsplit(".", 1)[0]
     return render[name](*a, **kw)
+    
+def urlsafe(path):
+    """Replaces space and special chars in the path with hyphen.
+
+        >>> urlsafe('a b')
+        'a-b'
+        >>> urlsafe('a - b')
+        'a-b'
+        >>> urlsafe('a--b')
+        'a-b'
+        >>> urlsafe('a: b?x')
+        'a-b-x'
+    """
+    # limit the length to avoid too long urls.
+    path = path.lower()[:100] 
+    return get_safepath_re().sub('-', path).strip('-')
+
+@web.memoize
+def get_safepath_re():
+    """Make regular expression that matches all unsafe chars."""
+    # unsafe chars according to RFC 2396
+    reserved = ";/?:@&=+$,"
+    delims = '<>#%"'
+    unwise = "{}|\\^[]`"
+    space = ' \n\r'
+    
+    spacelike = "-_"
+
+    unsafe = reserved + delims + unwise + space + spacelike
+    pattern = '[%s]+' % re.escape(unsafe)
+    return re.compile(pattern)    
 
 class index(delegate.page):
     path = "/blog"
@@ -42,7 +74,7 @@ def process_post(post):
     post = web.storage(post)
     post.timestamp = parse_datetime(post.timestamp)
     post.author = post.author and web.ctx.site.get(post.author)
-    post.url = "/%s-%s" % (post.key, post.title.replace(" ", "-"))
+    post.url = "/%s-%s" % (post.key, urlsafe(post.title))
     return post
         
 def get_post(id):
@@ -67,7 +99,7 @@ class post(delegate.page):
             raise web.notfound()
         
         title = (title or "")[1:] # strip -
-        ptitle = post.title.replace(" ", "-").strip("-")
+        ptitle = urlsafe(post.title)
         if ptitle != title:
             raise web.redirect("/blog/%s-%s" % (id, ptitle))
         return render_template("blog/post", post)

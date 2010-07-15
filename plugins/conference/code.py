@@ -7,38 +7,10 @@ from web.form import Form, Textbox, Textarea, notnull, regexp, Validator
 import os
 import time
 import simplejson
-import re
 
 import tweet
 import blog
-
-def urlsafe(path):
-    """Replaces space and special chars in the path with hyphen.
-    
-        >>> urlsafe('a b')
-        'a-b'
-        >>> urlsafe('a - b')
-        'a-b'
-        >>> urlsafe('a--b')
-        'a-b'
-        >>> urlsafe('a: b?x')
-        'a-b-x'
-    """
-    path = path.replace("-", " ").replace("_", " ")
-    return get_safepath_re().sub('-', path).strip('-')
-
-@web.memoize
-def get_safepath_re():
-    """Make regular expression that matches all unsafe chars."""
-    # unsafe chars according to RFC 2396
-    reserved = ";/?:@&=+$,"
-    delims = '<>#%"'
-    unwise = "{}|\\^[]`"
-    space = ' \n\r'
-    
-    unsafe = reserved + delims + unwise + space
-    pattern = '[%s]+' % re.escape(unsafe)
-    return re.compile(pattern)
+from blog import urlsafe
 
 @public
 def render_template(name, *a, **kw):
@@ -116,7 +88,7 @@ class display_talk(delegate.page):
     path = "/talks/(\d+)(.*)"
     
     def GET(self, id, title):
-        title = title.strip("-")
+        title = title[1:] # strip leading hyphen
         try:
             talk = web.ctx.site.store["talks/" + id]
         except KeyError:
