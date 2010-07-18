@@ -1,6 +1,9 @@
-$def with (form)
+$def with (form, edit=False)
 
-$var title: Submit a talk
+$if edit:
+    $var title: Editing $form.title.value
+$else:
+    $var title: Submit a talk
 
 $:macros.TalkNavigation()
 

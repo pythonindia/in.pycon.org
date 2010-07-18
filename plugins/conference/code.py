@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from infogami.utils import delegate
+from infogami.utils.context import context
 from infogami.utils.view import render, add_flash_message, public
 from infogami import config
 import web
@@ -7,6 +8,7 @@ from web.form import Form, Textbox, Textarea, notnull, regexp, Validator
 import os
 import time
 import simplejson
+import datetime
 
 import tweet
 import blog
@@ -41,7 +43,8 @@ talk_lock = threading.Lock()
 
 def new_talk(talk):
     talk['type'] = 'talk'
-
+    talk['created_on'] = datetime.datetime.utcnow().isoformat()
+    
     talk_lock.acquire()
     try:
         index = 1+ max(int(web.numify(k)) for k in web.ctx.site.store.keys(type='talk', limit=1000))
@@ -102,6 +105,60 @@ class display_talk(delegate.page):
         talk = web.storage(talk)
         return render_template("talks/view", talk)
         
+def _get_talk(id, title, suffix=""):
+    title = title[1:] # strip leading hyphen
+    try:
+        talk = web.ctx.site.store["talks/" + id]
+    except KeyError:
+        raise web.notfound()
+
+    xtitle = urlsafe(talk.get('title', 'untitled'))
+    if xtitle != title:
+        path = "/talks/%s-%s%s" % (id, xtitle, suffix)
+        raise web.redirect(path)
+    return talk
+        
+class edit_talk(delegate.page):
+    path = "/talks/(\d+)(-.*)?/edit"
+    
+    def verify_code(self, talk):
+        i = web.input(secret="", _method="GET")
+        return self.is_admin() or i.code == talk.get("secret")
+        
+    def is_admin(self):
+        return context.user and context.user.key in [m.key for m in web.ctx.site.get('/usergroup/admin').members]
+    
+    def GET(self, id, title):        
+        talk = _get_talk(id, title, suffix="/edit")
+        if self.verify_code(talk):
+            f = form_talk()
+            f.fill(talk)
+            return render_template("talks/submit", form=f, edit=True)
+        else:
+            return render_template("permission_denied", web.ctx.path, "Permission denied to edit this talk.")
+            
+    def POST(self, id, title):
+        talk = _get_talk(id, title, suffix="/edit")
+        if self.verify_code(talk):
+            i = web.input(_method="POST")
+            for k in ["key", "type", "password"]:
+                i.pop("password", None)
+            
+            f = form_talk()
+            if not f.validates(i):
+                return render_template("talks/submit", form=f, edit=True)
+            else:
+                talk.update(i)
+                talk['revision'] = 1 + talk.get("revision", 1)
+                
+                dir = config.get("talks_dir", "/tmp/talks")
+                write("%s/%s-%s.txt" % (dir, id, talk['revision']), simplejson.dumps(i))
+                
+                web.ctx.site.store["talks/%s" % id] = talk
+                raise web.seeother("talks/%s" % id)
+        else:
+            return render_template("permission_denied", web.ctx.path, "Permission denied to edit this talk.")
+
 class talks(delegate.page):
     def GET(self):
         i = web.input()
