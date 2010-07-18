@@ -123,7 +123,7 @@ class edit_talk(delegate.page):
     
     def verify_code(self, talk):
         i = web.input(secret="", _method="GET")
-        return self.is_admin() or i.code == talk.get("secret")
+        return self.is_admin() or i.secret == talk.get("secret")
         
     def is_admin(self):
         return context.user and context.user.key in [m.key for m in web.ctx.site.get('/usergroup/admin').members]
