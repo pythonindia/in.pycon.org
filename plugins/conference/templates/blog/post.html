@@ -6,6 +6,9 @@ $var title: $post.title
 	$if post.author:
 		<b>By $post.author.displayname</b> -
 	Posted on $post.timestamp.strftime("%b %d, %Y at %I:%M %p")
+	
+	$if ctx.user:
+	    &nbsp;<a href="$homepath()$post.url/edit">edit</a>
 </div>
 
 $:format(post.body)

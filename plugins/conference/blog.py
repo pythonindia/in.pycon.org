@@ -77,10 +77,14 @@ def process_post(post):
     post.url = "/%s-%s" % (post.key, urlsafe(post.title))
     return post
         
-def get_post(id):
+def get_post(id, process=True):
     key = "blog/%s" % id
     post = web.ctx.site.store[key]
-    return process_post(post)
+    if process:
+        post = process_post(post)
+    else:
+        post = web.storage(post)
+    return post
 
 @public
 def get_all_posts():
@@ -89,20 +93,41 @@ def get_all_posts():
 def is_admin():
     """"Returns True if the current user is in admin usergroup."""
     return context.user and context.user.key in [m.key for m in web.ctx.site.get('/usergroup/admin').members]
+    
+def _get_post(id, title, process=True):
+    try:
+        post = get_post(id, process)
+    except KeyError:
+        raise web.notfound()
+    
+    title = (title or "")[1:] # strip -
+    ptitle = urlsafe(post.title)
+    if ptitle != title:
+        raise web.redirect("/blog/%s-%s" % (id, ptitle))
+    return post
 
 class post(delegate.page):
-    path = "/blog/(\d+)(-.*)?"
+    path = "/blog/(\d+)(-[^/]*)?"
     def GET(self, id, title):
-        try:
-            post = get_post(id)
-        except KeyError:
-            raise web.notfound()
-        
-        title = (title or "")[1:] # strip -
-        ptitle = urlsafe(post.title)
-        if ptitle != title:
-            raise web.redirect("/blog/%s-%s" % (id, ptitle))
+        post = _get_post(id, title)
         return render_template("blog/post", post)
+
+class edit(delegate.page):
+    path = "/blog/(\d+)(-.*)?/edit"
+    def GET(self, id, title):
+        post = _get_post(id, title)
+        f = form_new()
+        f.fill(post)
+        return render_template("blog/new", f)
+
+    def POST(self, id, title):
+        post = _get_post(id, title, process=False)
+        i = web.input()
+
+        post['title'] = i.title
+        post['body'] = i.body
+        web.ctx.site.store[post['key']] = post
+        raise web.seeother("/blog/%s" % id)
 
 form_new = Form(
     Textbox("title", notnull),
