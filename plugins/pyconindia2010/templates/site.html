@@ -6,23 +6,13 @@ $def with (page)
     <title>$page.title - PyCon India 2010</title>
     <link rel="shortcut icon" href="$homepath()/static/favicon.png" />
     <link rel="stylesheet" type="text/css" href="$homepath()/static/themes/foomanchoo/style.css" />
-
-    <script type="text/javascript" src="$homepath()/static/themes/alankar/cufon-yui.js"></script>
-    <script type="text/javascript" src="$homepath()/static/themes/foomanchoo/fonts/Georgia_400-Georgia_700.font.js"></script>
+    <link href="$homepath()/static/wmd.css" rel="stylesheet" type="text/css"/>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-
-    <!--
-    <script type="text/javascript" src="$homepath()/static/themes/alankar/jquery.countdown.min.js"></script>
-    -->
-
     <script type="text/javascript" src="$homepath()/static/js/jquery/jquery.cycle.lite.min.js"></script>
-
-    <link href="$homepath()/static/wmd.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="$homepath()/static/js/jquery.wmd.min.js"></script>
 
     <script type="text/javascript">
-
     \$(document).ready( function(){
 //         \$('#slide-content img').css({'display':'block'});
         // ^^ should help non js browsers display only one slide
@@ -36,40 +26,7 @@ $def with (page)
             "helpLink": "http://daringfireball.net/projects/markdown/",
             "helpHoverTitle": "Markdown Help"
         });
-
-        Cufon.replace('#nav');
-        Cufon.replace('#contents h1');
-        Cufon.replace('#contents h2');
-        Cufon.replace('#contents h3');
-        Cufon.replace('#contents h4');
     });
-
-    /*
-        \$(document).ready( function(){
-            // setup countdown
-            var pyconDate = new Date();
-            pyconDate = new Date("2010/09/25");
-            \$('#defaultCountdown').countdown({
-                until: pyconDate,
-                format: 'DHMS',
-                layout: '<div id="t7_timer">'+
-                            '<div id="t7_vals">'+
-                                '<div id="t7_d" class="t7_numbs">{dnn}</div>'+
-                                '<div id="t7_h" class="t7_numbs">{hnn}</div>'+
-                                '<div id="t7_m" class="t7_numbs">{mnn}</div>'+
-                                '<div id="t7_s" class="t7_numbs">{snn}</div>'+
-                            '</div>'+
-                            '<div id="t7_labels">'+
-                                '<div id="t7_dl" class="t7_labs">days</div>'+
-                                '<div id="t7_hl" class="t7_labs">hours</div>'+
-                                '<div id="t7_ml" class="t7_labs">mins</div>'+
-                                '<div id="t7_sl" class="t7_labs">secs</div>'+
-                            '</div>'+
-                            '<div id="t7_timer_over"></div>'+
-                        '</div>'
-            });
-        });
-    */
     </script>
     <script type="text/javascript">
 
