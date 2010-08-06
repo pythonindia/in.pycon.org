@@ -114,8 +114,8 @@ img, a { border:none; }
 	font-size:10px;
 	border-bottom:1px solid #d7cdac;
 	margin:10px 20px 0px 20px;
-	-webkit-box-shadow:1px 1px 1px #ffffff;
-	-moz-box-shadow:1px 1px 1px #ffffff;
+	-webkit-box-shadow:0px 1px 1px #ffffff;
+	-moz-box-shadow:0px 1px 1px #ffffff;
 }
 
 /* 			contents 			*/
