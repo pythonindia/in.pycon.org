@@ -115,12 +115,18 @@ class post(delegate.page):
 class edit(delegate.page):
     path = "/blog/(\d+)(-.*)?/edit"
     def GET(self, id, title):
+        if not is_admin():
+            return render_template("permission_denied", web.ctx.path, "Only admins can edit blog posts.")
+
         post = _get_post(id, title)
         f = form_new()
         f.fill(post)
         return render_template("blog/new", f)
 
     def POST(self, id, title):
+        if not is_admin():
+            return render_template("permission_denied", web.ctx.path, "Only admins can edit blog posts.")
+
         post = _get_post(id, title, process=False)
         i = web.input()
 
