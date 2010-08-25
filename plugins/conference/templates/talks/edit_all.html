@@ -1,6 +1,6 @@
 $def with (items)
 
-$var title: Talks
+$var title: Edit Talks
 
 $:macros.TalkNavigation()
 
@@ -25,8 +25,7 @@ $:macros.TalkNavigation()
     }
 </style>
 
-$ d = dict([("pending", "Under Review"), ("accepted", "Accepted"), ("rejected", "Rejected"), ("withdrawn", "Withdrawn")])
-
+<form method="POST">
 <table class="talks">
     <tr>
         <th class="index">#</th>
@@ -34,11 +33,16 @@ $ d = dict([("pending", "Under Review"), ("accepted", "Accepted"), ("rejected", 
         <th>Submitted by</th>
         <th>Status</th>
     </tr>
+
 $for key, talk in items:
     <tr class="talk_review $loop.parity">
         <td class="index">$loop.index</td>
-        <td class="title"><a href="$homepath()/$key">$talk['title']</a></td>
-        <td class="author">$talk.get('authors')</td>
-        <td class="status">$d.get(talk.get('status'), "Under review")</td>
+        <td class="title"><a href="#">$talk['title']</a></td>
+        <td class="author">$talk.get('authors') - $talk.get('status')</td>
+        $ id = numify(key)
+        <td class="status">$:Dropdown("status-" + id, [("pending", "Under Review"), ("accepted", "Accepted"), ("rejected", "Rejected"), ("withdrawn", "Withdrawn")], value=talk.get("status", "pending")).render()</td>
     </tr>
 </table>
+
+<input type="submit" name="submit" value="Submit"/>
+</form>

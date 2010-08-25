@@ -9,6 +9,8 @@ import os
 import time
 import simplejson
 import datetime
+import string
+import random
 
 import tweet
 import blog
@@ -44,6 +46,7 @@ talk_lock = threading.Lock()
 def new_talk(talk):
     talk['type'] = 'talk'
     talk['created_on'] = datetime.datetime.utcnow().isoformat()
+    talk['secret'] = random_string()
     
     talk_lock.acquire()
     try:
@@ -53,6 +56,10 @@ def new_talk(talk):
     finally: 
         talk_lock.release()
     return key
+    
+def random_string(n=10):
+    """Creates a random string of n chars."""
+    return "".join(random.chioce(string.lowercase) for i in range(n))
     
 class submit_talk(delegate.page):
     path = "/talks/submit"
@@ -117,17 +124,18 @@ def _get_talk(id, title, suffix=""):
         path = "/talks/%s-%s%s" % (id, xtitle, suffix)
         raise web.redirect(path)
     return talk
+    
+def is_admin():
+    return context.user and context.user.key in [m.key for m in web.ctx.site.get('/usergroup/admin').members]
+
         
 class edit_talk(delegate.page):
     path = "/talks/(\d+)(-.*)?/edit"
     
     def verify_code(self, talk):
         i = web.input(secret="", _method="GET")
-        return self.is_admin() or i.secret == talk.get("secret")
+        return is_admin() or i.secret == talk.get("secret")
         
-    def is_admin(self):
-        return context.user and context.user.key in [m.key for m in web.ctx.site.get('/usergroup/admin').members]
-    
     def GET(self, id, title):        
         talk = _get_talk(id, title, suffix="/edit")
         if self.verify_code(talk):
@@ -172,6 +180,28 @@ class talks(delegate.page):
             items = [(k, talk) for k, talk in items if talk.get('level') == i.level]
         
         return render_template("talks/index", items)
+        
+class talks_edit(delegate.page):
+    path = "/talks/edit"
+    def GET(self):
+        if not is_admin():
+            return render_template("permission_denied", web.ctx.path, "Permission denied to modify talks.")
+        else:
+            items = web.ctx.site.store.items(type='talk', limit=1000)
+            return render_template("talks/edit_all", items)
+    
+    def POST(self):
+        i = dict((k, v) for k, v in web.input().items() if k.startswith("status-"))
+        
+        store = web.ctx.site.store
+        for k, v in i.items():
+            key = 'talks/' + web.numify(k)
+            talk = store[key]
+            if talk.get('status') != v:
+                print "updating", key, v
+                store[key] = dict(talk, status=v)
+        
+        raise web.seeother("/talks")    
 
 def write(path, text):
     dirname = os.path.dirname(path)
@@ -181,3 +211,5 @@ def write(path, text):
     f = open(path, 'w')
     f.write(text)
     f.close()
+
+public(web.numify)
