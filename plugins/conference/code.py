@@ -174,9 +174,12 @@ class talk_attach(delegate.page):
         i = web.input(secret="")
         return is_admin() or i.secret == talk.get("secret")
 
-    def GET(self, id, title):        
+    def GET(self, id, title):
+        i = web.input(secret="")
+        
         talk = _get_talk(id, title, suffix="/upload")
         form = form_upload()
+        form.secret.value = i.secret
         return render_template("talks/upload", talk=talk, form=form)
 
     def POST(self, id, title):
