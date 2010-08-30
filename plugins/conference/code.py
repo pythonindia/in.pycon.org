@@ -220,7 +220,7 @@ class talk_attach(delegate.page):
         
     def prettysize(self, n):
         if n < 1024:
-            return "%d bytes" % len(n)
+            return "%d bytes" % n
         elif n < 1024 * 1024:
             return "%.1f KB" % (n/1024.0)
         else:
