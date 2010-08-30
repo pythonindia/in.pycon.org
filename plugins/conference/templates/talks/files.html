@@ -1,0 +1,55 @@
+$def with (talk, delete=False)
+
+
+<style type="text/css">
+    table.files {
+        border-collapse: collapse;
+        margin: 10px 0px;
+    }
+    table.files td {
+        padding: 10px;
+        border: 1px solid #d7d3c3;
+    }
+    table.files th {
+        padding: 10px;
+        border: 1px solid #d7d3c3;
+        font-weight: bold;
+    }
+</style>
+ 
+<div>
+$if talk.get("files"):
+    <table class="files">
+        <tr>
+            <th>file</th>
+            <th>size</th>
+            <th>uploaded</th>
+            <th>comment</th>
+            $if delete:
+                <th>delete?</th>
+        </tr>
+    $for f in talk.files[::-1]:
+        <tr>
+            <td><a href="$homepath()/static/files/$talk.key/$f.name">$f.name</a></td>
+            <td>$f.size</td>
+            <td>$datestr(parse_datetime(f.timestamp))</td>
+            <td>$f.comment</td>
+            $if delete:
+                <td><a href="#" class="delete">delete this file.</a></td>
+        </tr>
+    </table>
+    <p>
+    You can <a href='$homepath()/$talk.key/upload'>upload or delete a file</a> if you are author of this talk.
+    </p>
+$else:
+    No files uploaded. You can <a href='$homepath()/$talk.key/upload'>upload a file</a> if you are author of this talk.
+</div>
+
+$if delete:
+    <script type="text/javascript">
+        \$(function() {
+            \$("a.delete").click(function() {
+                alert("This functionality is not yet implemented.");
+            });
+        })
+    </script>

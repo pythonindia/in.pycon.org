@@ -214,7 +214,7 @@ img.sponsor {
     border: 1px solid #D7C383; 
 }
 
-.formElement input[type=text], .formElement select {
+.formElement input[type=text], .formElement input[type=password], .formElement select {
     width: 500px;
     font-size: 1.2em;
 }
@@ -270,5 +270,4 @@ p {
 .post-line {
     font-size: 0.8em;
     margin-top: -10px;
-}
 }

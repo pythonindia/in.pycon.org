@@ -1,0 +1,60 @@
+$def with (talk, form)
+
+$var title: $talk.title: Files
+
+<div class="label">Upload a new File</div> 
+
+<form method="POST" enctype="multipart/form-data">
+    $if form.note:
+        <h3 class='note'>$form.note</h3>
+    $elif not form.valid:
+        <h3 class='note'>Please fix the errors shown in red</h3>
+        
+    <div class="formElement">
+        <div class="label">
+            <label for="file">File</label>
+            <span class="smaller lighter">select the file to upload</span>
+        </div>
+        <div class="input">
+            <input type="file" id="file" name="file" value="$form.file.value"/>
+            <span class="note">$form.file.note</span>
+        </div>
+    </div>
+    
+    <div class="formElement">
+        <div class="label">
+            <label for="comment">Comment</label>
+            <span class="smaller lighter">optional comment to describe the contents of the file</span>
+        </div>
+        <div class="input">
+            <input type="text" id="comment" name="comment" value="$form.comment.value"/>
+            <span class="note">$form.comment.note</span>
+        </div>
+    </div>
+
+    <div class="formElement">
+        <div class="label">
+            <label for="secret">Password</label>
+            <span class="smaller lighter">secret code to edit your talk, you must have received it in an email</span>
+        </div>
+        <div class="input">
+            <input type="password" id="secret" name="secret" value="$form.secret.value"/>
+            <span class="note">$form.secret.note</span>
+        </div>
+    </div>
+
+    <div class="formElement">
+        <div class="label">
+        </div>
+        <div class="input">
+            <input type="submit" id="submit" name="upload" value="Upload"/>
+            <span class="note">$form.secret.note</span>
+        </div>
+    </div>
+    
+    <div style="margin: 20px;">
+    </div>
+    
+    <div class="label">Manage Files</div> 
+    $:render_template("talks/files", talk, delete=True)
+</div>

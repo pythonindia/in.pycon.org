@@ -2,9 +2,10 @@
 from infogami.utils import delegate
 from infogami.utils.context import context
 from infogami.utils.view import render, add_flash_message, public
+from infogami.infobase.client import parse_datetime
 from infogami import config
 import web
-from web.form import Form, Textbox, Textarea, notnull, regexp, Validator
+from web.form import Form, Textbox, Password, File, Textarea, notnull, regexp, Validator
 import os
 import time
 import simplejson
@@ -40,6 +41,12 @@ form_talk = Form(
     Textarea("notes"),
 )
 
+form_upload = Form(
+    Password("secret", notnull),
+    File("file", notnull),
+    Textbox("comment")
+)
+
 import threading
 talk_lock = threading.Lock()
 
@@ -56,7 +63,7 @@ def new_talk(talk):
     finally: 
         talk_lock.release()
     return key
-    
+
 def random_string(n=10):
     """Creates a random string of n chars."""
     return "".join(random.chioce(string.lowercase) for i in range(n))
@@ -98,37 +105,30 @@ class display_talk(delegate.page):
     path = "/talks/(\d+)(.*)"
     
     def GET(self, id, title):
-        title = title[1:] # strip leading hyphen
-        try:
-            talk = web.ctx.site.store["talks/" + id]
-        except KeyError:
-            raise web.notfound()
-            
-        xtitle = urlsafe(talk.get('title', 'untitled'))
-        if xtitle != title:
-            path = "/talks/%s-%s" % (id, xtitle)
-            raise web.redirect(path)
-            
-        talk = web.storage(talk)
+        talk = _get_talk(id, title)
         return render_template("talks/view", talk)
         
 def _get_talk(id, title, suffix=""):
-    title = title[1:] # strip leading hyphen
+    title = title and title[1:] # strip leading hyphen
     try:
         talk = web.ctx.site.store["talks/" + id]
     except KeyError:
         raise web.notfound()
-
+        
     xtitle = urlsafe(talk.get('title', 'untitled'))
     if xtitle != title:
         path = "/talks/%s-%s%s" % (id, xtitle, suffix)
         raise web.redirect(path)
+        
+    talk['key'] = 'talks/' + id
+    talk['files'] = [web.storage(f) for f in talk.get('files', [])]
+    talk = web.storage(talk)
+    
     return talk
     
 def is_admin():
     return context.user and context.user.key in [m.key for m in web.ctx.site.get('/usergroup/admin').members]
 
-        
 class edit_talk(delegate.page):
     path = "/talks/(\d+)(-.*)?/edit"
     
@@ -167,6 +167,79 @@ class edit_talk(delegate.page):
         else:
             return render_template("permission_denied", web.ctx.path, "Permission denied to edit this talk.")
 
+class talk_attach(delegate.page):
+    path = "/talks/(\d+)(-.*)?/upload"
+
+    def verify_code(self, talk):
+        i = web.input(secret="")
+        return is_admin() or i.secret == talk.get("secret")
+
+    def GET(self, id, title):        
+        talk = _get_talk(id, title, suffix="/upload")
+        form = form_upload()
+        return render_template("talks/upload", talk=talk, form=form)
+
+    def POST(self, id, title):
+        talk = _get_talk(id, title, suffix="/upload")
+        
+        i = web.input(file={}, comment="")
+        form = form_upload()
+        form.fill(i)
+    
+        if not self.verify_code(talk):
+            form.note = "Incorrect password"
+            return render_template("talks/upload", talk=talk, form=form)
+            
+        filename = i.file.filename.replace(" ", "-")
+        # work-around for windoz
+        if "\\" in filename:
+            filename = filename.split("\\")[-1]
+        data = i.file.value
+        
+        try:
+            savefile(talk['key'], filename, data)
+        except OverwriteError:
+            form.note = "A file already exists with the given file name. Delete that file first if you want to overwrite."
+            return render_template("talks/upload", talk=talk, form=form)
+            
+        f = {
+            "name": filename,
+            "size": self.prettysize(len(data)),
+            "timestamp": datetime.datetime.utcnow().isoformat(),
+            "comment": i.comment
+        }
+        files = talk.get('files', [])
+        files.append(f)
+        talk['files'] = files
+        
+        web.ctx.site.store[talk.key] = talk
+        raise web.seeother("/" + talk.key)
+        
+    def prettysize(self, n):
+        if n < 1024:
+            return "%d bytes" % len(n)
+        elif n < 1024 * 1024:
+            return "%.1f KB" % (n/1024.0)
+        else:
+            return "%.1f MB" % (n / (1024 * 1024.0))
+            
+class OverwriteError(IOError):
+    pass
+            
+def savefile(key, filename, data):
+    dir ="static/files/" + key
+    if not os.path.exists(dir):
+        os.makedirs(dir)
+    
+    path = dir + "/" + filename
+    
+    if os.path.exists(path):
+        raise OverwriteError("file already exists")
+    
+    f = open(path, 'w')
+    f.write(data)
+    f.close()
+
 class talks(delegate.page):
     def GET(self):
         i = web.input()
@@ -201,7 +274,7 @@ class talks_edit(delegate.page):
                 print "updating", key, v
                 store[key] = dict(talk, status=v)
         
-        raise web.seeother("/talks")    
+        raise web.seeother("/talks")
 
 def write(path, text):
     dirname = os.path.dirname(path)
@@ -213,3 +286,4 @@ def write(path, text):
     f.close()
 
 public(web.numify)
+public(parse_datetime)
