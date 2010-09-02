@@ -171,7 +171,7 @@ class talk_attach(delegate.page):
     path = "/talks/(\d+)(-.*)?/upload"
 
     def verify_code(self, talk):
-        i = web.input(secret="", _method="GET")
+        i = web.input(secret="", _unicode=False)
         return is_admin() or i.secret == talk.get("secret")
 
     def GET(self, id, title):
