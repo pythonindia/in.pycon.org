@@ -171,7 +171,7 @@ class talk_attach(delegate.page):
     path = "/talks/(\d+)(-.*)?/upload"
 
     def verify_code(self, talk):
-        i = web.input(secret="")
+        i = web.input(secret="", _method="GET")
         return is_admin() or i.secret == talk.get("secret")
 
     def GET(self, id, title):
@@ -204,7 +204,7 @@ class talk_attach(delegate.page):
         except OverwriteError:
             form.note = "A file already exists with the given file name. Delete that file first if you want to overwrite."
             return render_template("talks/upload", talk=talk, form=form)
-            
+        
         f = {
             "name": filename,
             "size": self.prettysize(len(data)),
