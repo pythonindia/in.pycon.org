@@ -216,6 +216,16 @@ class talk_attach(delegate.page):
         talk['files'] = files
         
         web.ctx.site.store[talk.key] = talk
+
+        if config.get('from_address') and config.get('talk_submission_contact'):
+            email = render_template("talks/file_uploaded_email", talk, filename)
+            web.sendmail(
+                from_address=config.from_address, 
+                to_address=config.talk_submission_contact,
+                subject=web.safestr(email.subject.strip()),
+                message=web.safestr(email)
+            )
+
         raise web.seeother("/" + talk.key)
         
     def prettysize(self, n):
@@ -287,6 +297,13 @@ def write(path, text):
     f = open(path, 'w')
     f.write(text)
     f.close()
+    
+class Request:
+    path = property(lambda self: web.ctx.path)
+    home = property(lambda self: web.ctx.home)
+    domain = property(lambda self: web.ctx.host)
+
+web.template.Template.globals['request'] = Request()
 
 public(web.numify)
 public(parse_datetime)

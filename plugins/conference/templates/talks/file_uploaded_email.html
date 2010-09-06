@@ -1,0 +1,11 @@
+$def with (talk, filename)
+
+$var subject: File Uploaded: $talk.title
+
+New file is uploaded to talk "$talk.title".
+
+Filename: $filename
+URL: $request.home/static/files/$talk.key/$filename
+
+Talk: $request.home/$talk.key
+
