@@ -4,6 +4,7 @@ $var title: Talks
 
 $:macros.TalkNavigation()
 
+$ d = dict([("pending", "Under Review"), ("accepted", "Accepted"), ("rejected", "Rejected"), ("withdrawn", "Withdrawn")])
 <style type="text/css">
     td, th {
         padding: 5px;
@@ -23,22 +24,37 @@ $:macros.TalkNavigation()
         text-align: left;
         font-weight: bold;
     }
+
+    .pending {
+        background: solid #dddddd;
+     }
+    .accepted {
+        background: #ddffdd;
+    }
+    .rejected {
+        background: #ffdddd;
+    }
+    .withdrawn td.title{
+        text-decoration:line-through;
+        background: solid #dddddd;
+    }
+
 </style>
-
-$ d = dict([("pending", "Under Review"), ("accepted", "Accepted"), ("rejected", "Rejected"), ("withdrawn", "Withdrawn")])
-
 <table class="talks">
     <tr>
         <th class="index">#</th>
         <th>Talk title</th>
         <th>Submitted by</th>
         <th>Status</th>
+        <th>Slides Uploded</th>
     </tr>
 $for key, talk in items:
-    <tr class="talk_review $loop.parity">
+    $ status = talk.get('status', 'review')
+    <tr class="talk_review $loop.parity $status">
         <td class="index">$loop.index</td>
         <td class="title"><a href="$homepath()/$key">$talk['title']</a></td>
         <td class="author">$talk.get('authors')</td>
         <td class="status">$d.get(talk.get('status'), "Under review")</td>
+        <td class="status">$(talk.get("files") and "Yes" or "No")</td>
     </tr>
 </table>
