@@ -1,4 +1,5 @@
 $def with (page)
+$def with (page)
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -6,13 +7,18 @@ $def with (page)
     <title>$page.title - PyCon India 2010</title>
     <link rel="shortcut icon" href="$homepath()/static/favicon.png" />
     <link rel="stylesheet" type="text/css" href="$homepath()/static/themes/foomanchoo/style.css" />
-    <link href="$homepath()/static/wmd.css" rel="stylesheet" type="text/css"/>
+
+   <link href="$homepath()/blog/feed.rss" rel="alternate" title="PyCon India 2010 Blog" type="application/rss+xml" />
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
     <script type="text/javascript" src="$homepath()/static/js/jquery/jquery.cycle.lite.min.js"></script>
+
+    <link href="$homepath()/static/wmd.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="$homepath()/static/js/jquery.wmd.min.js"></script>
 
     <script type="text/javascript">
+
     \$(document).ready( function(){
 //         \$('#slide-content img').css({'display':'block'});
         // ^^ should help non js browsers display only one slide
@@ -26,7 +32,14 @@ $def with (page)
             "helpLink": "http://daringfireball.net/projects/markdown/",
             "helpHoverTitle": "Markdown Help"
         });
+
+       // Cufon.replace('#nav');
+       // Cufon.replace('#contents h1');
+       // Cufon.replace('#contents h2');
+       // Cufon.replace('#contents h3');
+       // Cufon.replace('#contents h4');
     });
+
     </script>
     <script type="text/javascript">
 
@@ -60,22 +73,23 @@ $def with (page)
                         <a href="$homepath()/">Home</a>
                     </div>
                     <div>
-                        <a href="$homepath()/sponsors">Sponsors</a>
+                        <a href="$homepath()/register">Register</a>
                     </div>
                     <div>
-                        <a href="$homepath()/cfp">CFP</a>
+                        <a href="$homepath()/sponsors">Sponsors</a>
                     </div>
                     <div>
                         <a href="$homepath()/talks">Talks</a>
                     </div>
                     <div>
+                        <a href="$homepath()/schedule">Schedule</a>
+                    </div>
+                    <div>
                         <a href="$homepath()/publicity">Publicity</a>
                     </div>
-                    <!--
-                    <li>
-                        <a href="$homepath()/program">schedule</a>
-                    </li>
-                    -->
+                    <div>
+                        <a href="$homepath()/blog">Blog</a>
+                    </div>
                     <div>
                         <a href="$homepath()/faq">FAQ</a>
                     </div>
@@ -100,15 +114,47 @@ $def with (page)
             </div>
         <div id="content">
             <div id="sidebar">
-                <h3>VENUE</h3>
+                <h3>PLATINUM</h3>
                 <p>
-                    <a href="http://www.msrit.edu/"  title="M. S. Ramaiah Institute of Technology"><img class="sponsor" src="$homepath()/static/images/msrit.jpg" alt="MSRIT logo"/></a>
+                    <a href="http://www.zeomega.com" title="ZeOmega"><img class="sponsor" src="$homepath()/static/images/zeomega-logo.gif" alt="ZeOmega Logo"/></a>
                 </p>
+                <p>
+                     <a href="http://fossee.in" title="FOSSEE">
+                          <img src="http://in.pycon.org/2010/static/images/fossee-logo.jpg" width="180" height="74px" alt="FOSSEE" />
+                      </a>
+                </p>
+                
                 <h3>GOLD</h3>
                 <p>
                     <a href="http://www.python.org/psf/" title="Python Software Foundation"><img class="sponsor" src="$homepath()/static/images/python-logo.png" alt="PSF logo"/></a>
                 </p>
+
+                <h3>SILVER</h3>
+                <p>
+                    <a href="http://www.tandberg.com/" title="TANDBERG, now part of Cisco"><img class="sponsor" src="http://in.pycon.org/2010/static/images/tandberg_cisco_joint_logo.jpg" alt="TANDBERG, now part of Cisco"/></a>
+                </p>
+
+                <p>
+                    <a href="http://www.projectplace.com/landingpages/PyCon-2010" title="Online project management & collaboration - software as a service"><img class="sponsor" src="http://in.pycon.org/2010/static/images/projectplace.png" alt="Projectplace - "Online project management & collaboration - software as a service"/></a>
+                </p>
+
+                <h3>VENUE</h3>
+                <p>
+                    <a href="http://www.msrit.edu/"  title="M. S. Ramaiah Institute of Technology"><img class="sponsor" src="$homepath()/static/images/msrit.jpg" alt="MSRIT logo"/></a>
+                </p>
+
+                <h3>Supported By</h3>
+                <p>
+                    <a href="http://www.mahiti.org/"  title="Mahiti Infotech"><img class="sponsor" src="$homepath()/static/images/mahiti-logo.jpg" alt="Mahiti Logo"/></a>
+                </p>
+
+                <h3>Media Partner</h3>
+                <p>
+                    <a href="http://vodex.in/"  title="Virtual Veda"><img class="sponsor" src="$homepath()/static/images/VodexLogo.jpg" alt="Vodex Logo"/></a>
+                </p>
+
             </div>
+
             <!-- end of sidebar -->
 
             <div id="contents">
@@ -129,13 +175,18 @@ $def with (page)
         <!-- end of content -->
 
         <div id="footer">
+        <div style="float: right"><br/>Powered by <a href="http://infogami.org/">Infogami</a></div>
+        <div>
             <a href="mailto:contact@in.pycon.org">Contact Us</a> | <a href="$homepath()/account/login">Admin</a>
             $if ctx.user:
                 | <form name='logout' action="$homepath()/account/logout" method='POST' style="display:none;"></form>
-                Welcome <a href="$homepath()/$ctx.user">$ctx.user.displayname</a>!
+                Welcome <a href="$homepath()$ctx.user.key">$ctx.user.displayname</a>
                 | <a href="#" onclick="document.forms['logout'].submit()">Log out</a>
-            <span style="float: right">Powered by <a href="http://infogami.org/">Infogami</a></span>
+        </div> 
+        <div>Copyright (c) 2010 <a href="http://ipss.org.in/">Indian Python Software Society</a></div>
         </div>
+
+            
         <!-- end of content -->
 
     </div>
