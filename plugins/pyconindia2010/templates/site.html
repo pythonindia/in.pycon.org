@@ -3,11 +3,11 @@ $def with (page)
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>$page.title - PyCon India 2010</title>
+    <title>$page.title - PyCon India 2011</title>
     <link rel="shortcut icon" href="$homepath()/static/favicon.png" />
     <link rel="stylesheet" type="text/css" href="$homepath()/static/themes/foomanchoo/style.css" />
 
-   <link href="$homepath()/blog/feed.rss" rel="alternate" title="PyCon India 2010 Blog" type="application/rss+xml" />
+   <link href="$homepath()/blog/feed.rss" rel="alternate" title="PyCon India 2011 Blog" type="application/rss+xml" />
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 
@@ -54,7 +54,6 @@ $def with (page)
       var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(ga, s);
      })();
-
     </script>
 
 </head>
@@ -71,6 +70,7 @@ $def with (page)
                     <div class="nav_first">
                         <a href="$homepath()/">Home</a>
                     </div>
+                    <!--
                     <div>
                         <a href="$homepath()/register">Register</a>
                     </div>
@@ -92,9 +92,14 @@ $def with (page)
                     <div>
                         <a href="$homepath()/faq">FAQ</a>
                     </div>
+                    -->
 
                     <div class='nav_end'>
+                        <span style="color: rgb(215, 177, 177);">•</span>
+                        <a style="color: #ffbbbb; font-size:0.9em;" href="/2010">2010</a>
+                        <span style="color: rgb(215, 177, 177);">•</span>
                         <a style="color: #ffbbbb; font-size:0.9em;" href="/2009">2009</a>
+                        <span style="color: rgb(215, 177, 177);">•</span>
                     </div>
                 </div>
             </div>
@@ -115,41 +120,28 @@ $def with (page)
             <div id="sidebar">
                 <h3>PLATINUM</h3>
                 <p>
-                    <a href="http://www.zeomega.com" title="ZeOmega"><img class="sponsor" src="$homepath()/static/images/zeomega-logo.gif" alt="ZeOmega Logo"/></a>
-                </p>
-                <p>
-                     <a href="http://fossee.in" title="FOSSEE">
-                          <img src="http://in.pycon.org/2010/static/images/fossee-logo.jpg" width="180" height="74px" alt="FOSSEE" />
-                      </a>
+                    <a href="#" title="sponsor link"><img class="sponsor" src="$homepath()/static/images/sponsor.jpg" alt="Sponsor Logo"/></a>
                 </p>
                 
                 <h3>GOLD</h3>
                 <p>
-                    <a href="http://www.python.org/psf/" title="Python Software Foundation"><img class="sponsor" src="$homepath()/static/images/python-logo.png" alt="PSF logo"/></a>
+                    <a href="#" title="sponsor link"><img class="sponsor" src="$homepath()/static/images/sponsor.jpg" alt="Sponsor Logo"/></a>
+                </p>
+                <p>
+                    <a href="#" title="sponsor link"><img class="sponsor" src="$homepath()/static/images/sponsor.jpg" alt="Sponsor Logo"/></a>
                 </p>
 
                 <h3>SILVER</h3>
                 <p>
-                    <a href="http://www.tandberg.com/" title="TANDBERG, now part of Cisco"><img class="sponsor" src="http://in.pycon.org/2010/static/images/tandberg_cisco_joint_logo.jpg" alt="TANDBERG, now part of Cisco"/></a>
+                    <a href="#" title="sponsor link"><img class="sponsor" src="$homepath()/static/images/sponsor.jpg" alt="Sponsor Logo"/></a>
                 </p>
-
                 <p>
-                    <a href="http://www.projectplace.com/landingpages/PyCon-2010" title="Online project management & collaboration - software as a service"><img class="sponsor" src="http://in.pycon.org/2010/static/images/projectplace.png" alt="Projectplace - "Online project management & collaboration - software as a service"/></a>
+                    <a href="#" title="sponsor link"><img class="sponsor" src="$homepath()/static/images/sponsor.jpg" alt="Sponsor Logo"/></a>
                 </p>
 
                 <h3>VENUE</h3>
                 <p>
-                    <a href="http://www.msrit.edu/"  title="M. S. Ramaiah Institute of Technology"><img class="sponsor" src="$homepath()/static/images/msrit.jpg" alt="MSRIT logo"/></a>
-                </p>
-
-                <h3>Supported By</h3>
-                <p>
-                    <a href="http://www.mahiti.org/"  title="Mahiti Infotech"><img class="sponsor" src="$homepath()/static/images/mahiti-logo.jpg" alt="Mahiti Logo"/></a>
-                </p>
-
-                <h3>Media Partner</h3>
-                <p>
-                    <a href="http://vodex.in/"  title="Virtual Veda"><img class="sponsor" src="$homepath()/static/images/VodexLogo.jpg" alt="Vodex Logo"/></a>
+                    <a href="#" title="sponsor link"><img class="sponsor" src="$homepath()/static/images/sponsor.jpg" alt="Sponsor Logo"/></a>
                 </p>
 
             </div>
@@ -182,12 +174,9 @@ $def with (page)
                 Welcome <a href="$homepath()$ctx.user.key">$ctx.user.displayname</a>
                 | <a href="#" onclick="document.forms['logout'].submit()">Log out</a>
         </div> 
-        <div>Copyright (c) 2010 <a href="http://ipss.org.in/">Indian Python Software Society</a></div>
+        <div>Copyright (c) 2011 <a href="http://ipss.org.in/">Indian Python Software Society</a></div>
         </div>
-
-            
         <!-- end of content -->
-
     </div>
 </body>
 </html>
