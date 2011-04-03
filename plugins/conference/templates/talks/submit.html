@@ -3,9 +3,7 @@ $def with (form, edit=False)
 $if edit:
     $var title: Editing $form.title.value
 $else:
-    $var title: Talk submission is now closed!
-    See <a href="$homepath()/cfp">CFP page</a> for details.
-    $return
+    $var title: Submit a talk
 
 $:macros.TalkNavigation()
 
