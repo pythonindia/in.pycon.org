@@ -4,6 +4,15 @@ $if edit:
     $var title: Editing $form.title.value
 $else:
     $var title: Submit a talk
+    
+    $if get_cfp_status() == "closed":
+        Talk submission is now closed!
+        <br/>
+        See <a href="$homepath()/cfp">CFP page</a> for details.
+        $return
+    $elif get_cfp_status() != "open":
+        Call for Proposals is not open yet. Please follow <a href="$homepath()/blog/feed.rss"/>RSS feeds</a> for updates.
+        $return
 
 $:macros.TalkNavigation()
 

@@ -284,7 +284,6 @@ class talks_edit(delegate.page):
             key = 'talks/' + web.numify(k)
             talk = store[key]
             if talk.get('status') != v:
-                print "updating", key, v
                 store[key] = dict(talk, status=v)
         
         raise web.seeother("/talks")
@@ -304,6 +303,10 @@ class Request:
     domain = property(lambda self: web.ctx.host)
 
 web.template.Template.globals['request'] = Request()
+
+@public
+def get_cfp_status():
+    return config.get("cfp_status")
 
 public(web.numify)
 public(parse_datetime)
