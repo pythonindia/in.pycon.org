@@ -57,16 +57,19 @@ $code:
             <span class="note">$form.title.note</span>
         </div>
     </div>
+
     <div class="formElement">
         <div class="label">
-            <label for="duration">Duration</label>
-            <span class="smaller lighter">Expected duration of the talk in minutes.</span>
+            <label for="duration">Talk Type</label>
+            <span class="smaller lighter">Is this a regular talk or a tutorial?</span>
         </div>
         <div class="input">
-            $:Dropdown("duration", [("30", "30 minutes"), ("45", "45 minutes")], value=form.duration.value or '45').render()
+            $:Dropdown("talk_type", [("talk", "Regular Talk (45 minutes)"), ("tutorial", "Tutorial (3 hours)")], value=form.duration.value or '45').render()
             <span class="note">$form.duration.note</span>
         </div>
     </div>
+    
+    
     <div class="formElement">
         <div class="label">
             <label for="level">Level</label>
@@ -124,7 +127,7 @@ $code:
             <span class="note">$form.contact.note</span>
         </div>
     </div>
-    
+
     <div class="formElement">
         <div class="label">
             <label for="profile">Profile of Authors</label>
