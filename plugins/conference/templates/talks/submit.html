@@ -4,7 +4,7 @@ $if edit:
     $var title: Editing $form.title.value
 $else:
     $var title: Submit a talk
-    
+
     $if get_cfp_status() == "closed":
         Talk submission is now closed!
         <br/>
@@ -24,6 +24,7 @@ $code:
     Other Python implementations (such as PyPy, IronPython etc)
     Concurrency
     Databases
+    Data Analysis / Engineering with Python
     Scientific Programming
     Network programming
     Game programming
