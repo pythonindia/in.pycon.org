@@ -23,9 +23,12 @@ def tweet(template_name, **kw):
     """
     try:
         t = config.get("twitter", {})
-        if twitter and t.get('username') and t.get('password') and template_name in t:
-            api = twitter.Api(t['username'], t['password'])
-        
+        if twitter and template_name in t:
+            api = twitter.Api(
+                consumer_key=t['consumer_key'],
+                consumer_secret=t['consumer_secret'],
+                access_token_key=t['access_token_key'],
+                access_token_secret=t['access_token_secret'])
             message = compile_template(t[template_name])(**kw)
             api.PostUpdate(message[:140])
     except:
