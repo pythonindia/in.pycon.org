@@ -27,9 +27,10 @@ re_email = r'^[\w\.-]+@[\w\.-]+\.[a-zA-Z]{2,4}$'
     
 form_talk = Form(
     Textbox("title", notnull),
-    Textbox("duration", notnull),
+    Textbox("talk_type", notnull),
     Textbox("authors", notnull),
     Textbox("contact", notnull, regexp(re_email, "Please enter a valid email address.")),
+    Textbox("phone", notnull),
     Textarea("profile", notnull),
     Textbox("level", notnull),
     Textbox("topic", notnull),
@@ -47,26 +48,19 @@ form_upload = Form(
     Textbox("comment")
 )
 
-import threading
-talk_lock = threading.Lock()
-
 def new_talk(talk):
     talk['type'] = 'talk'
     talk['created_on'] = datetime.datetime.utcnow().isoformat()
     talk['secret'] = random_string()
     
-    talk_lock.acquire()
-    try:
-        index = 1+ max(int(web.numify(k)) for k in web.ctx.site.store.keys(type='talk', limit=1000))
-        key = "talks/%d" % index
-        web.ctx.site.store[key] = talk
-    finally: 
-        talk_lock.release()
+    index = web.ctx.site.seq.next_value("talks")
+    key = "talks/%d" % index
+    web.ctx.site.store[key] = talk
     return key
 
 def random_string(n=10):
     """Creates a random string of n chars."""
-    return "".join(random.chioce(string.lowercase) for i in range(n))
+    return "".join(random.choice(string.lowercase) for i in range(n))
     
 class submit_talk(delegate.page):
     path = "/talks/submit"
