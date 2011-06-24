@@ -259,8 +259,8 @@ class talks(delegate.page):
         if 'level' in i:
             items = [(k, talk) for k, talk in items if talk.get('level') == i.level]
 
-        if 'type' in i:
-            items = [(k, talk) for k, talk in items if talk.get('type') == i.type]
+        if 'talk_type' in i:
+            items = [(k, talk) for k, talk in items if talk.get('talk_type') == i.talk_type]
         
         return render_template("talks/index", items)
         
