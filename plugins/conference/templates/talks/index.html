@@ -15,10 +15,10 @@ $ d = dict([("pending", "Under Review"), ("accepted", "Accepted"), ("rejected", 
         text-align: right;
     }
     td.title {
-        width: 50%;
+        width: 40%;
     }
-    td.author, td.status {
-        width: 25%;
+    td.author, td.status, td.type {
+        width: 20%;
     }
     th {
         text-align: left;
@@ -38,7 +38,9 @@ $ d = dict([("pending", "Under Review"), ("accepted", "Accepted"), ("rejected", 
         text-decoration:line-through;
         background: solid #dddddd;
     }
-
+    .type-tutorial {
+        background-color: #ffdfae;
+    }
 </style>
 <table class="talks">
     <tr>
@@ -50,9 +52,11 @@ $ d = dict([("pending", "Under Review"), ("accepted", "Accepted"), ("rejected", 
     </tr>
 $for key, talk in items:
     $ status = talk.get('status', 'review')
-    <tr class="talk_review $loop.parity $status">
+    $ type = talk.get("talk_type", "talk")
+    <tr class="talk_review $loop.parity $status type_$type">
         <td class="index">$loop.index</td>
         <td class="title"><a href="$homepath()/$key">$talk['title']</a></td>
+        <td class="type">$type<td>
         <td class="author">$talk.get('authors')</td>
         <td class="status">$d.get(talk.get('status'), "Under review")</td>
         <td class="status">$(talk.get("files") and "Yes" or "No")</td>
