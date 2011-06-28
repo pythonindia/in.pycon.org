@@ -53,7 +53,7 @@ $ d = dict([("pending", "Under Review"), ("accepted", "Accepted"), ("rejected", 
 $for key, talk in items:
     $ status = talk.get('status', 'review')
     $ type = talk.get("talk_type", "talk")
-    <tr class="talk_review $loop.parity $status type_$type">
+    <tr class="talk_review $loop.parity $status type-$type">
         <td class="index">$loop.index</td>
         <td class="title"><a href="$homepath()/$key">$talk['title']</a></td>
         <td class="type">$type<td>
