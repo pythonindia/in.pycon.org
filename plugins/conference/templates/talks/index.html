@@ -57,7 +57,7 @@ $for key, talk in items:
     <tr class="talk_review $loop.parity $status type-$type">
         <td class="index">$loop.index</td>
         <td class="title"><a href="$homepath()/$key">$talk['title']</a></td>
-        <td class="type">$type<td>
+        <td class="type">$type</td>
         <td class="author">$talk.get('authors')</td>
         <td class="status">$d.get(talk.get('status'), "Under review")</td>
         <td class="status">$(talk.get("files") and "Yes" or "No")</td>
