@@ -169,14 +169,14 @@ a:hover { color: #036; }
  */
 
 body{
-    background:#E4E2D6;
+    background: #bebebe url(img/bgdirt.png) repeat;
 }
 
 header{
-    height:130px;
+    height:100px;
     color:black;
     padding-top:30px;
-    background: url(/img/shade1.png) center 120px no-repeat;
+    /*background: url(img/shade1.png) center 120px no-repeat;*/
     /*-webkit-box-shadow: 0px 0px 10px #736f6c;*/
 }
 
@@ -208,19 +208,21 @@ header{
     padding:5px 10px;
     font-weight:bold;
 }
+#main{ 
+    background:white;
+    padding-top:15px;
+    border-radius:5px;
+    padding-bottom:15px;
+}
 #banner a{
-    background:#daddcb;
-    color:#2a282c;
+    background:#e4eaff;
+    color:#2a47ae;
     text-decoration:none;
     font-weight:bold;
 }
 #banner{
-    background: url(/img/snake.png) bottom right no-repeat;
-    height:430px;
-}
-#content{
-    background:white;
-    border-radius:5px;
+    /*background: url(img/snake.png) bottom right no-repeat;*/
+    /*height:430px;*/
 }
 #intro p{
     padding-bottom:10px;
@@ -228,10 +230,157 @@ header{
 #front-left{
     padding:5px;
 }
+#twitbuzz a{
+    background:#ffffff;
+}
+div.twtr-ft{
+    display:none;
+}
 footer{
-    margin-top:60px;
+    padding:100px 10px 0px 10px;
+    width:960px;
+    margin:0px auto;
+}
+#shortcut{
+    padding-top:5px;
+    padding-bottom:5px;
+}
+#shortcut li { list-style:none;}
+#shortcut li a {
+    width:265px;
+    background:#083e9a;
+    display:block;
+    padding:10px 20px;
+    font-size:1.5em;
+    margin:10px 0px;
+    color:#ffffff;
+}
+#sponsors h3{
+    font-size:1.3em;
+    margin-top:10px;
+    margin-bottom:5px;
+}
+#sponsors h4{
+    font-size:1.1em;
+}
+#sponsors div a{
+    display:block;
+    margin-bottom:20px;
+    background:none;
+}
+#sponsors div.right{
+    padding-left:30px;
+}
+#contents table tbody tr td.value{padding-left:10px;}
+/** 
+ * CSS FROM OLD THEME ------------------------------------------
+ */
+ /* 			contents 			*/
+#contents { /*padding:4px 20px 20px 20px;*/ padding-left:10px;}
+#contents p p{
+	/*padding: 10px 0px 15px 30px;*/
 }
 
+#contents h1, #contents h2, #contents h3, #contents h4 {
+ color:#a74738;
+ /*font-family: Georgia, "Times New Roman", serif;*/
+ font-weight:normal;
+ display:block;
+}
+#contents h1{color:#3c5065; }
+#contents h1 {
+ font-size: 1.875em;
+ margin-bottom: 15px;
+ padding:5px 5px 3px 0px;
+}
+
+#contents h2 {
+	font-size: 1.5em;
+	margin-top:15px;
+	margin-bottom: 10px;
+}
+
+#contents h3 {
+ font-size: 1.3em;
+ margin: 5px 0px;
+}
+
+#contents h4 {
+ font-size: 1.1em;
+ margin: 5px 0px;
+}
+/*              login box               */
+.loginbox { text-align:left; margin-bottom:20px;}
+/* customizations by Anand. */
+
+.error {
+    padding: 5px;
+    background: #ffaaaa;
+    border: 1px solid #ff8888;
+}
+.info {
+    padding: 5px;
+    background: #F7E3A3;
+    border: 1px solid #D7C383; 
+}
+
+.formElement input[type=text], .formElement input[type=password], .formElement select {
+    width: 500px;
+    font-size: 1.2em;
+}
+
+span.smaller {
+    font-size: 0.8em;
+    color: #666666;
+}
+
+textarea {
+    width: 90%;
+    font-size: 1.0em;
+    padding: 5px;
+}
+
+label {
+    font-weight: 700;
+}
+
+div.label {
+    padding: 15px 0px 2px 0px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+.right {
+    float: right;
+}
+.red {
+    color: #e44028;
+}
+
+strong {
+    font-weight: bold;
+}
+
+span.note {
+    color: #e44028;
+}
+
+option {
+    padding: 0px 3px;
+}
+
+p {
+    margin: 5px 0px;
+}
+
+.post-line {
+    font-size: 0.8em;
+    margin-top: -10px;
+}
 /**
  * Non-semantic helper classes: please define your styles before this section.
  */

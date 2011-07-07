@@ -1,185 +1,286 @@
 $def with (page)
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-    <title>$page.title - PyCon India 2011</title>
-    <link rel="shortcut icon" href="$homepath()/static/favicon.png" />
-    <link rel="stylesheet" type="text/css" href="$homepath()/static/themes/foomanchoo/style.css" />
+  <meta charset="utf-8">
 
-   <link href="$homepath()/blog/feed.rss" rel="alternate" title="PyCon India 2011 Blog" type="application/rss+xml" />
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <script type="text/javascript" src="$homepath()/static/js/jquery/jquery.cycle.lite.min.js"></script>
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="$homepath()/static/wmd.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="$homepath()/static/js/jquery.wmd.min.js"></script>
+  <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+  <link rel="shortcut icon" href="$homepath()/static/favicon.ico">
+  <link rel="apple-touch-icon" href="$homepath()/static/apple-touch-icon.png">
 
-    <script type="text/javascript">
 
-    \$(document).ready( function(){
-//         \$('#slide-content img').css({'display':'block'});
-        // ^^ should help non js browsers display only one slide
-        \$('#slide-content').cycle({
-            fx:    'fade',
-            speed:  2500
-        });
+  <!-- CSS: implied media="all" -->
+  <link rel="stylesheet" href="$homepath()/static/style.css">
+	<link rel="stylesheet" href="$homepath()/static/960.css">
 
-        \$("textarea.wmd").wmd({
-            "preview": true,
-            "helpLink": "http://daringfireball.net/projects/markdown/",
-            "helpHoverTitle": "Markdown Help"
-        });
+  <!-- Uncomment if you are specifically targeting less enabled mobile browsers
+  <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  -->
 
-       // Cufon.replace('#nav');
-       // Cufon.replace('#contents h1');
-       // Cufon.replace('#contents h2');
-       // Cufon.replace('#contents h3');
-       // Cufon.replace('#contents h4');
-    });
-
-    </script>
-    <script type="text/javascript">
-
-     var _gaq = _gaq || [];
-     _gaq.push(['_setAccount', 'UA-17055001-1']);
-     _gaq.push(['_trackPageview']);
-
-     (function() {
-      var ga = document.createElement('script'); ga.type =
-    'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
-    'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(ga, s);
-     })();
-    </script>
-
+  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+  <script src="$homepath()/static/js/libs/modernizr-1.7.min.js"></script>
 </head>
+
 <body>
-    <div id="wrapper">
-        <div id="header">
-            <div id="defaultCountdown"></div>
 
-            <div id="nav">
-                <div id="nav_spacer">
-                    <div class='nav_start'>
-                            &nbsp;
-                    </div>
-                    <div class="nav_first">
-                        <a href="$homepath()/">Home</a>
-                    </div>
-                    <div>
-                        <a href="$homepath()/register">Register</a>
-                    </div>
-                    <div>
-                        <a href="$homepath()/cfp">CFP</a>
-                    </div>
+  <div id="container">
+    <header>
+			<div class="container_12" id="headshade">
+				<div class="grid_4">
+					<img src="$homepath()/static/img/pycon.png" alt="" />
+				</div>
+				<div class="grid_8">
+					<div class="year">
+						Sep 16th-18th 2011
+					</div>
+					<div id="nav">
+						<ul>
+							<li><a href="/2011/">home</a></li>
+							<li><a href="$homepath()/cfp">cfp</a></li>
+							<li><a href="$homepath()/talks">talks</a></li>
+							<li><a href="$homepath()/sponsors">sponsors</a></li>
+							<li><a href="$homepath()/blog">blog</a></li>
+							<li><a href="/2010">2010</a></li>
+							<li><a href="/2009">2009</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+    </header>
 
-                    <div>
-                        <a href="$homepath()/talks">Talks</a>
-                    </div>
+    <div id="main" class="container_12">
+		$if page.title == "Home":
+			<div class="grid_12">
+				<div id="banner" class="container_12">
+					<div class="grid_7">
+						<div id="intro">
+							<p>
+								PyCon India is the primary Python conference in India. A purely volunteer effort, it is being hosted for the third time in India, and will attract some of the best Python developers in India and around the world.
+							</p>
+							<p>
+								The conference will take place in <a href="http://goo.gl/QqShB">Symbiosis, Pune</a> on 16th, 17th and 18th September 2011.
+							</p>
+							<p>
+								<a href="http://goo.gl/QqShB"><img src="http://maps.google.com/maps/api/staticmap?center=SIBM,Pune&zoom=12&size=530x150&maptype=roadmap&markers=color:blue|label:S|18.538029999999999,73.731825000000001&sensor=true" /></a>
+							</p>
+							<p>
+								The conference will consist of tutorials, full length presentations, shorter lightning talks and open sprints and BoFs.
+							</p>
+							<h3>Staying upto date</h3> 
+							<p>Keep in touch with conference updates by subscribe to <a href="/2011/blog/feed.rss">RSS Feed</a> and joining the <a href="http://twitter.com/#search?q=%23pyconindia">#pyconindia</a> channel.
+							</p>
+						</div>
+					</div>
+					<div class="grid_5">
+						<div>
+							<h3>Important dates</h3>
+							<ul> 
+							 <li> 
+							     Early bird registrations close on <strong>August 1 2011</strong>.
+							 </li> 
 
-                    <div>
-                        <a href="$homepath()/sponsors">Sponsors</a>
-                    </div>
+							 <li> 
+							     Call for talk/tutorial proposals extended to <strong>July 10 2011</strong>.
+							 </li> 
 
-                    <div>
-                        <a href="$homepath()/blog">Blog</a>
-                    </div>
+							 <li> 
+							     Conference dates - <strong>16, 17, 18 Sep 2011</strong>.
+							 </li>
+							</ul>
+							<br />
+							<h2>Shortcuts</h2> 
+							<p>You can use the following quick-links to get things done faster.
+							</p> 
+							<ul id="shortcut"> 
+							 <li> 
+							     <a href="$homepath()/register">Register as a Delegate</a> 
+							 </li> 
 
-                    <!--
-                    <div>
-                        <a href="$homepath()/schedule">Schedule</a>
-                    </div>
-                    <div>
-                        <a href="$homepath()/publicity">Publicity</a>
-                    </div>
-                    <div>
-                        <a href="$homepath()/faq">FAQ</a>
-                    </div>
-                    -->
+							 <li> 
+							     <a href="/2011/talks/submit">Submit a talk proposal</a> 
+							 </li> 
+							</ul>
 
-                    <div class='nav_end'>
-                        <span style="color: rgb(215, 177, 177);">•</span>
-                        <a style="color: #ffbbbb; font-size:0.9em;" href="/2010">2010</a>
-                        <span style="color: rgb(215, 177, 177);">•</span>
-                        <a style="color: #ffbbbb; font-size:0.9em;" href="/2009">2009</a>
-                        <span style="color: rgb(215, 177, 177);">•</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end of header -->
-        $if page.title == "Home":
-            <div id="slideshow">
-                <div id="slide-content">
-                    <img class='visible' src="$homepath()/static/images/slideshow/4.jpg" height="180" width="880" />
-                    <img src="$homepath()/static/images/slideshow/2.jpg" height="180" width="880" />
-                    <img src="$homepath()/static/images/slideshow/3.jpg" height="180" width="880" />
-                    <img src="$homepath()/static/images/slideshow/7.jpg" height="180" width="880" />
-                    <img src="$homepath()/static/images/slideshow/5.jpg" height="180" width="880" />
-                    <img src="$homepath()/static/images/slideshow/6.jpg" height="180" width="880" />
-                </div>
-            </div>
-        <div id="content">
-            <div id="sidebar">
-                <h3>GOLD</h3>
-                <p>
-                    <a href="http://www.zeomega.com/" title="ZeOmega"><img class="sponsor" src="$homepath()/static/images/zeomega-logo.gif" alt="ZeOmega"/></a>
-                </p>
-                <p>
-                    <a href="http://www.vayana.in/" title="Vayana Enterprises"><img class="sponsor" src="$homepath()/static/images/vayana-logo.gif" alt="Vayana Enterprises"/></a>
-                </p>
-                <h3>SILVER</h3>
-                <p>
-                    <a href="http://github.com" title="GitHub"><img class="sponsor" src="$homepath()/static/images/github-logo.png" alt="GitHub"/></a>
-                </p>
+						</div>
+					</div>
+					
+					<div class="clear"></div>
+					<div class="grid_7">
+						<div id="sponsors">
+							<h3>Sponsors</h3>
+							<div class="grid_3">
+								<h4>Gold</h4>
+								<a href="http://www.zeomega.com/">
+									<img src="http://in.pycon.org/2011/static/images/zeomega-logo.gif" alt="zeomega" />
+								</a>
+								<a href="http://www.vayana.in/">
+									<img src="http://in.pycon.org/2011/static/images/vayana-logo.gif" alt="vayana" />
+								</a>
+								<div class="clear" style="height:20px"></div>
+								<h4>Venue</h4>
+								<a href="http://www.symbiosiscomputers.com/v5/home/index.php">
+									<img src="http://in.pycon.org/2011/static/images/symbiosis-logo.jpg" alt="Symbiosis">
+								</a>
+								
+								<h4>Media Partner</h4>
+								<a href="http://www.linuxforu.com/">
+									<img src="http://in.pycon.org/2011/static/images/lfy-logo.png" alt="Linuxforyou">
+								</a>
+							</div>
+							<div class="grid_3 right">
+								<h4>Silver</h4>
+								<a href="http://github.com/">
+									<img src="http://in.pycon.org/2011/static/images/github-logo.png" alt="github"/>
+								</a>
+								<a href="http://www.openlabs.co.in/">
+									<img src="http://in.pycon.org/2011/static/images/openlabs-logo.png" alt="OpenLabs">
+								</a>
+								<div class="clear" style="height:20px"></div>
+								<h4>Organiser</h4>
+								<img src="http://ipss.org.in/sitemedia/pics/drawing.png" alt="Indian Python Software Society" title="Indian Python Software Society">
+							</div>							
+						</div>
+					</div>
+					<div class="grid_5">
+						<div id="twitbuzz">
+							<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+							<script>
+							new TWTR.Widget({
+							  version: 2, type: 'search', search: '#inpycon OR #pyconindia',
+							  interval: 6000, title: 'Buzz!', subject: 'PyCon India 2011',
+							  width: 360, height: 470,
+							  theme: {
+							    shell: {
+							      background: '#e4eaff',
+							      color: '#2a47ae'
+							    },
+							    tweets: {
+							      background: '#ffffff',
+							      color: '#444444',
+							      links: '#2a47ae'
+							    }
+							  },
+							  features: {
+							    scrollbar: false, loop: true, live: true,
+							    hashtags: true, timestamp: true,
+							    avatars: true, toptweets: true,
+							    behavior: 'default'
+							  }
+							}).render().start();
+							</script>
+						</div>
+					</div>
+				</div>
+			</div>
+		$else:
+				<div class="grid_8">
+					<div id="contents">
+					    <div class="flash-messages">
+					        $for flash in get_flash_messages():
+					            <div class="$flash.type"><span>$flash.message</span></div>
+					            <div class="clearfix"></div>
+					    </div>
+  
+					    $if page.title != "Home":
+					        <h1>$page.title</h1>
+					    $:page
+					</div>
+				</div>
+				<!-- end of normal content -->
+				<div class="grid_4">
+				  <div id="sidebar">
+				      <h3>GOLD</h3> 
+				      <p> 
+				          <a href="http://www.zeomega.com/" title="ZeOmega"><img class="sponsor" src="/2011/static/images/zeomega-logo.gif" alt="ZeOmega"/></a> 
+				      </p> 
+				      <p> 
+				          <a href="http://www.vayana.in/" title="Vayana Enterprises"><img class="sponsor" src="/2011/static/images/vayana-logo.gif" alt="Vayana Enterprises"/></a> 
+				      </p> 
+				      <h3>SILVER</h3> 
+				      <p> 
+				          <a href="http://github.com" title="GitHub"><img class="sponsor" src="/2011/static/images/github-logo.png" alt="GitHub"/></a> 
+				      </p> 
+				      <p> 
+				          <a href="http://www.openlabs.co.in/" title="Open Labs"><img class="sponsor" src="/2011/static/images/openlabs-logo.png" alt="Open Labs"/></a> 
+				      </p> 
 
-                <h3>VENUE</h3>
-                <p>
-                    <a href="http://www.sibm.edu/" title="Symbiosis Institute of Business Management"><img class="sponsor" src="$homepath()/static/images/symbiosis-logo.jpg" alt="Symbiosis Institute of Business Management"/></a>
-                </p>
+				      <h3>VENUE</h3> 
+				      <p> 
+				          <a href="http://www.symbiosiscomputers.com/v5/home/index.php" title="Symbiosis Institute of Computer Studies and Research"><img class="sponsor" src="/2011/static/images/symbiosis-logo.jpg" alt="Symbiosis Institute of Computer Studies and Research"/></a> 
+				      </p> 
 
-                <h3>ORGANISER</h3>
-                <p>
-                    <a href="http://ipss.org.in/" title="PyCon India is organised by the Indian Python community under the aegis of IPSS">Indian Python Software Society</a>
-                </p>
+				      <h3>MEDIA PARTNER</h3> 
+				      <p> 
+				          <a href="http://www.linuxforu.com" title="Linux For You Magazine"><img class="sponsor" src="/2011/static/images/lfy-logo.png" alt="Linux For You Magazine"/></a> 
+				      </p> 
 
-            </div>
-
-            <!-- end of sidebar -->
-
-            <div id="contents">
-                <div class="flash-messages">
-                    $for flash in get_flash_messages():
-                        <div class="$flash.type"><span>$flash.message</span></div>
-                        <div class="clearfix"></div>
-                </div>
-                
-                $if page.title != "Home":
-                    <h1>$page.title</h1>
-                $:page
-
-            </div>
-            <!-- end of normal content -->
-
-        </div>
-        <!-- end of content -->
-
-        <div id="footer">
-        <div style="float: right"><br/>Powered by <a href="http://infogami.org/">Infogami</a></div>
-        <div>
-            <a href="mailto:contact@in.pycon.org">Contact Us</a> | <a href="$homepath()/account/login">Admin</a>
-            $if ctx.user:
-                | <form name='logout' action="$homepath()/account/logout" method='POST' style="display:none;"></form>
-                Welcome <a href="$homepath()$ctx.user.key">$ctx.user.displayname</a>
-                | <a href="#" onclick="document.forms['logout'].submit()">Log out</a>
+				      <h3>ORGANISER</h3> 
+				      <p> 
+				          <a href="http://ipss.org.in" title="Indian Python Software Society"><img class="sponsor" src="/2011/static/images/ipss-logo.png" alt="Indian Python Software Society"/></a> 
+				      </p>
+				  </div>
+				  <!-- end of sidebar -->					
+				</div>
+    </div>	<!--! end of #main -->
+		
+    <footer>
+				<div style="float: right"><br/>Powered by <a href="http://infogami.org/">Infogami</a></div> 
+        <div> 
+            <a href="mailto:contact@in.pycon.org">Contact Us</a> | <a href="/2011/account/login">Admin</a> 
         </div> 
-        <div>Copyright (c) 2011 <a href="http://ipss.org.in/">Indian Python Software Society</a></div>
+        <div>Copyright (c) 2011 <a href="http://ipss.org.in/">Indian Python Software Society</a></div> 
         </div>
-        <!-- end of content -->
-    </div>
+    </footer>
+  </div> <!--! end of #container -->
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+  <script>window.jQuery || document.write("<script src='$homepath()/static/js/libs/jquery-1.5.1.min.js'>\x3C/script>")</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script src="$homepath()/static/js/plugins.js"></script>
+  <script src="$homepath()/static/js/script.js"></script>
+  <!-- end scripts-->
+
+
+  <!--[if lt IE 7 ]>
+    <script src="$homepath()/static/js/libs/dd_belatedpng.js"></script>
+    <script>DD_belatedPNG.fix("img, .png_bg"); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
+  <![endif]-->
+
+
+  <script type="text/javascript">
+
+   var _gaq = _gaq || [];
+   _gaq.push(['_setAccount', 'UA-17055001-1']);
+   _gaq.push(['_trackPageview']);
+
+   (function() {
+    var ga = document.createElement('script'); ga.type =
+  'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
+  'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(ga, s);
+   })();
+  </script>
+
 </body>
 </html>
