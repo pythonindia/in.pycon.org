@@ -25,26 +25,186 @@
 
   <!-- CSS: implied media="all" -->
   <link rel="stylesheet" href="css/style.css?v=2">
+	<link rel="stylesheet" href="css/960.css">
 
   <!-- Uncomment if you are specifically targeting less enabled mobile browsers
   <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  -->
 
   <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
   <script src="js/libs/modernizr-1.7.min.js"></script>
-
+	
 </head>
 
 <body>
 
   <div id="container">
     <header>
-
+			<div class="container_12" id="headshade">
+				<div class="grid_4">
+					<img src="/img/pycon.png" alt="" />
+				</div>
+				<div class="grid_8">
+					<div class="year">
+						Sep 16th-18th 2011
+					</div>
+					<div id="nav">
+						<ul>
+							<li><a href="#">home</a></li>
+							<li><a href="#">cfp</a></li>
+							<li><a href="#">talks</a></li>
+							<li><a href="#">sponsors</a></li>
+							<li><a href="#">blog</a></li>
+							<li><a href="#">2010</a></li>
+							<li><a href="#">2009</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
     </header>
-    <div id="main" role="main">
 
+    <div id="main" class="container_12">
+			<div class="grid_12">
+				<div id="banner" class="container_12">
+					<div class="grid_7">
+						<div id="intro">
+							<p>
+								PyCon India is the primary Python conference in India. A purely volunteer effort, it is being hosted for the third time in India, and will attract some of the best Python developers in India and around the world.
+							</p>
+							<p>
+								The conference will take place in <a href="http://goo.gl/QqShB">Symbiosis, Pune</a> on 16th, 17th and 18th September 2011.
+							</p>
+							<p>
+								<a href="http://goo.gl/QqShB"><img src="http://maps.google.com/maps/api/staticmap?center=SIBM,Pune&zoom=12&size=530x150&maptype=roadmap&markers=color:blue|label:S|18.538029999999999,73.731825000000001&sensor=true" /></a>
+							</p>
+							<p>
+								The conference will consist of tutorials, full length presentations, shorter lightning talks and open sprints and BoFs.
+							</p>
+							<p>
+								<h2>Shortcuts</h2> 
+								<p>You can use the following quick-links to get things done faster.
+								</p> 
+								<ul> 
+								 <li> 
+								     <a href="/2011/register">Register as a delegate for Pycon India</a> 
+								 </li> 
+
+								 <li> 
+								     <a href="/2011/talks/submit">Submit a talk proposal</a> 
+								 </li> 
+								</ul>
+							</p>
+						</div>
+					</div>
+					<div class="grid_5">
+						<div>
+							<h3>Important dates</h3>
+							<ul> 
+							 <li> 
+							     Early bird registrations close on <strong>August 1 2011</strong>.
+							 </li> 
+
+							 <li> 
+							     Call for talk/tutorial proposals extended to <strong>July 10 2011</strong>.
+							 </li> 
+
+							 <li> 
+							     Conference dates - <strong>16, 17, 18 Sep 2011</strong>.
+							 </li>
+							</ul>
+							<br />
+							<br />
+							<h3>Staying upto date</h3> 
+							<p>Keep in touch with conference updates by subscribe to <a href="/2011/blog/feed.rss">RSS Feed</a> and joining the <a href="http://twitter.com/#search?q=%23pyconindia">#pyconindia</a> channel.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="clear"></div>
+			
+			<div class="grid_12">
+				<div id="content">
+					<div class="container_12">
+						<div class="grid_8">
+							<div id="front-left">
+								<h3 style="font-size:1.4em;">Sponsored by</h3>
+								<div class="container_12">
+									<div class="clear" style="height:20px"></div>
+									<div class="grid_4">
+										<h4>Gold</h4>
+										<img src="http://in.pycon.org/2011/static/images/zeomega-logo.gif" /> <br />
+										<img src="http://in.pycon.org/2011/static/images/vayana-logo.gif" alt="">
+									</div>
+									<div class="grid_4">
+										<h4>Silver</h4>
+										<img src="http://in.pycon.org/2011/static/images/github-logo.png" />
+									</div>
+									
+									<div class="clear" style="height:20px"></div>
+									
+									<div class="grid_4">
+										<h4>Venue</h4>
+										<img src="http://in.pycon.org/2011/static/images/symbiosis-logo.jpg" alt="">
+									</div>
+									<div class="grid_4">
+										<h4>Organiser</h4>
+										<img src="http://ipss.org.in/sitemedia/pics/drawing.png" alt="Indian Python Software Society" title="Indian Python Software Society">
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						<div class="grid_4">
+							<div>
+								<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+								<script>
+								new TWTR.Widget({
+								  version: 2,
+								  type: 'search',
+								  search: '#inpycon OR #pyconindia',
+								  interval: 6000,
+								  title: 'Buzz!',
+								  subject: 'PyCon India 2011',
+								  width: 'auto',
+								  height: 340,
+								  theme: {
+								    shell: {
+								      background: '#429d25',
+								      color: '#ffffff'
+								    },
+								    tweets: {
+								      background: '#ffffff',
+								      color: '#444444',
+								      links: '#1985b5'
+								    }
+								  },
+								  features: {
+								    scrollbar: false,
+								    loop: true,
+								    live: true,
+								    hashtags: true,
+								    timestamp: true,
+								    avatars: true,
+								    toptweets: true,
+								    behavior: 'default'
+								  }
+								}).render().start();
+								</script>								
+							</div>
+						</div>
+					</div>
+				</div>
+			<div>
     </div>
+		
     <footer>
-
+				<div style="float: right"><br/>Powered by <a href="http://infogami.org/">Infogami</a></div> 
+        <div> 
+            <a href="mailto:contact@in.pycon.org">Contact Us</a> | <a href="/2011/account/login">Admin</a> 
+        </div> 
+        <div>Copyright (c) 2011 <a href="http://ipss.org.in/">Indian Python Software Society</a></div> 
+        </div>
     </footer>
   </div> <!--! end of #container -->
 

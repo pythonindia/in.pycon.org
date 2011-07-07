@@ -152,7 +152,7 @@ body, select, input, textarea {
   /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */
   color: #444;
   /* Set your base font here, to apply evenly */
-  /* font-family: Georgia, serif;  */
+  font: 13px/1.5 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
 }
 
 /* Headers (h1, h2, etc) have no default font-size or margin; define those yourself */
@@ -165,23 +165,72 @@ a:hover { color: #036; }
 /**
  * Primary styles
  *
- * Author: 
+ * Author: ideamonk
  */
 
+body{
+    background:#E4E2D6;
+}
 
+header{
+    height:130px;
+    color:black;
+    padding-top:30px;
+    background: url(/img/shade1.png) center 120px no-repeat;
+    /*-webkit-box-shadow: 0px 0px 10px #736f6c;*/
+}
 
+.year{
+    float:left;
+    margin-left:-50px;
+    color:white;
+    background:#083e9a;
+    padding:5px 10px;
+    border-radius:5px;
+    font-weight:bold;
+}
 
-
-
-
-
-
-
-
-
-
-
-
+#nav { float:right; margin-right:20px;}
+#nav ul{
+    list-style:none;
+    margin-top:30px;
+}
+#nav ul li {
+    display:inline;
+}
+#nav ul li a{
+    display:block;
+    float:left;
+    margin:2px;
+    font-size:1.2em;
+    text-decoration:none;
+    color:#444444;
+    padding:5px 10px;
+    font-weight:bold;
+}
+#banner a{
+    background:#daddcb;
+    color:#2a282c;
+    text-decoration:none;
+    font-weight:bold;
+}
+#banner{
+    background: url(/img/snake.png) bottom right no-repeat;
+    height:430px;
+}
+#content{
+    background:white;
+    border-radius:5px;
+}
+#intro p{
+    padding-bottom:10px;
+}
+#front-left{
+    padding:5px;
+}
+footer{
+    margin-top:60px;
+}
 
 /**
  * Non-semantic helper classes: please define your styles before this section.
