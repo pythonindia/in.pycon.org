@@ -251,7 +251,7 @@ class talks(delegate.page):
     def GET(self):
         i = web.input()
         items = web.ctx.site.store.items(type='talk', limit=1000)
-        items = list(items)
+        items = list(items)[::-1]
         
         if 'topic' in i:
             items = [(k, talk) for k, talk in items if talk.get('topic') == i.topic]
