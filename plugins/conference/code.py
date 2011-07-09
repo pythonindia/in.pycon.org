@@ -112,6 +112,9 @@ def _get_talk(id, title, suffix=""):
     xtitle = urlsafe(talk.get('title', 'untitled'))
     if xtitle != title:
         path = "/talks/%s-%s%s" % (id, xtitle, suffix)
+        qs = web.ctx.env.get("QUERY_STRING")
+        if qs:
+            path += "?" + qs
         raise web.redirect(path)
         
     talk['key'] = 'talks/' + id
