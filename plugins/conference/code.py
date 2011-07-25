@@ -274,6 +274,7 @@ class talks_edit(delegate.page):
             return render_template("permission_denied", web.ctx.path, "Permission denied to modify talks.")
         else:
             items = web.ctx.site.store.items(type='talk', limit=1000)
+            items = list(items)[::-1] # to order by id
             return render_template("talks/edit_all", items)
     
     def POST(self):
