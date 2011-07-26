@@ -252,7 +252,7 @@ def savefile(key, filename, data):
 
 class talks(delegate.page):
     def GET(self):
-        i = web.input(status="selected")
+        i = web.input(status="accepted")
         items = web.ctx.site.store.items(type='talk', limit=1000)
         items = list(items)[::-1]
         
