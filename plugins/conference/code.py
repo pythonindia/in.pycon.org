@@ -252,7 +252,7 @@ def savefile(key, filename, data):
 
 class talks(delegate.page):
     def GET(self):
-        i = web.input()
+        i = web.input(status="selected")
         items = web.ctx.site.store.items(type='talk', limit=1000)
         items = list(items)[::-1]
         
@@ -264,6 +264,9 @@ class talks(delegate.page):
 
         if 'talk_type' in i:
             items = [(k, talk) for k, talk in items if talk.get('talk_type') == i.talk_type]
+
+        if i.status:
+            items = [(k, talk) for k, talk in items if talk.get('status') == i.status]
         
         return render_template("talks/index", items)
         
