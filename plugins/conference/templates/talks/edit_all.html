@@ -41,7 +41,7 @@ $for key, talk in items:
     <tr class="talk_review $loop.parity">
         <td class="index">$loop.index</td>
         <td class="title"><a href="#">$talk['title']</a></td>
-        <td class="author">$talk.get('authors')<br/><span class="small">$talk.get("contact")</span></td>
+        <td class="author">$talk.get('authors')<br/><span class="small">$talk.get("contact")</span><br/><span class="small">$talk.get("phone")</span></td>
         $ id = numify(key)
         <td class="status">$:Dropdown("status-" + id, [("pending", "Under Review"), ("accepted", "Accepted"), ("rejected", "Rejected"), ("withdrawn", "Withdrawn")], value=talk.get("status", "pending")).render()</td>
     </tr>
