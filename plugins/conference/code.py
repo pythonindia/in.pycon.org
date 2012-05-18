@@ -122,6 +122,17 @@ def _get_talk(id, title, suffix=""):
     talk = web.storage(talk)
     
     return talk
+
+@public    
+def get_talk(id):
+    try:
+        talk = web.ctx.site.store["talks/" + str(id)]
+    except KeyError:
+        return None
+
+    talk['key'] = 'talks/' + id
+    talk['files'] = [web.storage(f) for f in talk.get('files', [])]
+    return web.storage(talk)
     
 def is_admin():
     return context.user and context.user.key in [m.key for m in web.ctx.site.get('/usergroup/admin').members]
