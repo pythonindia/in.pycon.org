@@ -21,8 +21,14 @@ $:macros.TypeChanger(page.type)
             <input id="members#$i" type="text" name="members#$i" value="$page.members[i].key" style="margin: 3px 0px;"/>
         $for i in range(len(page.members), len(page.members)+5):
             <input id="members#$i" type="text" name="members#$i" value="" style="margin: 3px 0px;"/>
+    
     </div>
+    
+    
+    
+    
 </div>
+    
 
 <div class="formElement">
     <div class="label">
@@ -40,3 +46,4 @@ $:macros.TypeChanger(page.type)
 
 </div>
 </form>
+
